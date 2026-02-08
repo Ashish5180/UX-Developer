@@ -83,7 +83,7 @@ const Expertise = () => {
         <section
             ref={sectionRef}
             className="relative py-40 px-6 bg-[#FAF9F6] overflow-hidden"
-            id="expertise"
+            id="capabilities"
         >
             {/* Background Grid System - Rotating Blueprint */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-[0.03]">
@@ -117,8 +117,8 @@ const Expertise = () => {
                                 key={idx}
                                 onMouseEnter={() => setActiveIdx(idx)}
                                 className={`group cursor-pointer p-8 rounded-[2rem] transition-all duration-500 border-2 ${activeIdx === idx
-                                        ? 'bg-stone-900 border-stone-900 translate-x-4'
-                                        : 'bg-white border-stone-100 hover:border-stone-300'
+                                    ? 'bg-stone-900 border-stone-900 translate-x-4'
+                                    : 'bg-white border-stone-100 hover:border-stone-300'
                                     }`}
                             >
                                 <div className="flex items-center justify-between gap-6">

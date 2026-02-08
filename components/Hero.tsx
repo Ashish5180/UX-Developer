@@ -43,6 +43,7 @@ const Hero = () => {
     return (
         <section
             ref={sectionRef}
+            id="overview"
             className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FAF9F6] selection:bg-violet-100 selection:text-violet-900"
         >
             {/* --- ADVANCED INTERACTIVE BACKGROUND SYSTEM --- */}

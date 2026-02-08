@@ -38,7 +38,7 @@ const Contact = () => {
     return (
         <section
             ref={sectionRef}
-            id="contact"
+            id="collaboration"
             className="relative py-40 px-6 bg-[#FAF9F6] overflow-hidden min-h-screen flex items-center"
         >
             {/* Ambient Animated Background - Subtle for Light Theme */}

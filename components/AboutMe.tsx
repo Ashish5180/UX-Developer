@@ -79,7 +79,7 @@ const AboutMe = () => {
         <section
             ref={sectionRef}
             className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-[#FAF9F6] min-h-screen flex flex-col justify-center"
-            id="about"
+            id="biography"
             style={{ perspective: '2000px' }}
         >
             {/* Background Kinetic Layer - Continuous & Reactive */}

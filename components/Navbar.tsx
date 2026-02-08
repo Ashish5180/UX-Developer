@@ -37,9 +37,33 @@ const Navbar = () => {
         window.addEventListener('resize', handleResize);
         window.addEventListener('scroll', handleScroll);
 
+        // Intersection Observer to track scroll position
+        const observerCallback = (entries: IntersectionObserverEntry[]) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: "-10% 0px -40% 0px"
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        navItems.forEach(item => {
+            const element = document.getElementById(item.id);
+            if (element) {
+                observer.observe(element);
+            }
+        });
+
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
+            observer.disconnect();
         };
     }, []);
 
@@ -54,6 +78,19 @@ const Navbar = () => {
 
     const handleNavItemClick = (id: string) => {
         setActiveSection(id);
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 80; // Offset for navbar height
+            const bodyRect = document.body.getBoundingClientRect().top;
+            const elementRect = element.getBoundingClientRect().top;
+            const elementPosition = elementRect - bodyRect;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
         setIsMobileMenuOpen(false);
     };
 
@@ -124,7 +161,7 @@ const Navbar = () => {
                             {navItems.map((item, index) => (
                                 <button
                                     key={item.id}
-                                    onClick={() => setActiveSection(item.id)}
+                                    onClick={() => handleNavItemClick(item.id)}
                                     className={`
                 group relative px-5 py-2 text-xs lg:px-6 lg:text-sm rounded-full font-medium
                 transition-all duration-500 ease-out
@@ -176,7 +213,10 @@ const Navbar = () => {
                             <div className="w-[1px] h-6 bg-gradient-to-b from-transparent via-violet-300/40 to-transparent mx-1.5" />
 
                             {/* CTA Button - DESKTOP */}
-                            <button className="group relative px-5 py-2 text-xs lg:px-6 rounded-full overflow-hidden">
+                            <button
+                                onClick={() => handleNavItemClick('collaboration')}
+                                className="group relative px-5 py-2 text-xs lg:px-6 rounded-full overflow-hidden"
+                            >
                                 {/* Animated Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-[length:200%_100%] animate-gradient-flow" />
                                 <div className="absolute inset-[1.5px] rounded-full bg-gradient-to-br from-stone-50 to-amber-50 group-hover:opacity-0 transition-opacity duration-500" />

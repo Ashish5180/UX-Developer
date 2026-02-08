@@ -65,7 +65,7 @@ const Portfolio = () => {
 
     return (
         <section
-            id="projects"
+            id="showcase"
             ref={sectionRef}
             className="relative py-32 px-6 bg-[#FAF9F6] overflow-hidden"
         >
