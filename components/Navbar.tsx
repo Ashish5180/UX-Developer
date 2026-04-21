@@ -6,22 +6,20 @@ import { Cormorant_Garamond, Jost } from 'next/font/google';
 const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['300', '400', '600'], style: ['normal', 'italic'] });
 const jost = Jost({ subsets: ['latin'], weight: ['200', '300', '400', '500', '600'] });
 
+const navItems = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'about', label: 'Identity' },
+    { id: 'portfolio', label: 'Vault' },
+    { id: 'expertise', label: 'Expertise' },
+    { id: 'contact', label: 'Contact' },
+];
+
 const Navbar = () => {
     const [activeSection, setActiveSection] = useState('overview');
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isMounted, setIsMounted] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-    const navItems = [
-        { id: 'overview', label: 'Overview' },
-        { id: 'about', label: 'Identity' },
-        { id: 'portfolio', label: 'Vault' },
-        { id: 'expertise', label: 'Expertise' },
-        { id: 'contact', label: 'Contact' },
-    ];
-
     useEffect(() => {
-        setIsMounted(true);
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
         };

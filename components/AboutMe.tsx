@@ -81,7 +81,7 @@ const AboutMe = () => {
                                     </span> a visual story-teller crafting sensory digital journeys.
                                 </h3>
                                 <p className="text-lg sm:text-xl text-stone-600 leading-relaxed font-outfit font-light">
-                                    With a deep obsession for pixel-perfect interfaces and user psychology, I transform complex concepts into intuitive, high-end visual systems. Based in India, I focus on building interfaces that don't just solve problems—they evoke emotions.
+                                    With a deep obsession for pixel-perfect interfaces and user psychology, I transform complex concepts into intuitive, high-end visual systems. Based in India, I focus on building interfaces that don&apos;t just solve problems—they evoke emotions.
                                 </p>
                             </div>
 
@@ -146,7 +146,7 @@ const AboutMe = () => {
                             </div>
                             <div className="flex-1 flex flex-col justify-center">
                                 <p className="text-xl sm:text-2xl font-serif italic text-stone-800 leading-snug">
-                                    "{designPillars.find(p => p.id === activeTab)?.text}"
+                                    &quot;{designPillars.find(p => p.id === activeTab)?.text}&quot;
                                 </p>
                             </div>
                         </div>

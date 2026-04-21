@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { Cormorant_Garamond, Jost } from 'next/font/google';
 
 const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['300', '400', '600'], style: ['normal', 'italic'] });
@@ -152,16 +153,17 @@ const Portfolio = () => {
                             </div>
 
                             <div className="relative w-full aspect-[16/9] mb-8 overflow-hidden bg-stone-50 transition-all duration-700 group-hover:shadow-[0_40px_100px_-20px_rgba(42,37,32,0.15)]">
-                                <img 
+                                <Image 
                                     src={project.image} 
                                     alt={project.title} 
-                                    className="w-full h-full object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                                    fill
+                                    className="object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                                 />
                             </div>
 
                             <div className="space-y-4">
                                 <p className={`${cormorant.className} text-xl md:text-2xl text-[#2A2520] italic font-light leading-tight`}>
-                                    "{project.tagline}"
+                                    &quot;{project.tagline}&quot;
                                 </p>
                                 <div className="flex items-center gap-3 text-[#B8965A] border-t border-stone-100 pt-6 group-hover:translate-x-2 transition-transform duration-500">
                                     <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Enter Archive</span>
@@ -192,7 +194,12 @@ const Portfolio = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr]">
                             <div className="relative h-[300px] md:h-auto overflow-hidden">
-                                <img src={selectedProject.image} className="w-full h-full object-cover grayscale" alt={selectedProject.title} />
+                                <Image 
+                                    src={selectedProject.image} 
+                                    fill
+                                    className="object-cover grayscale" 
+                                    alt={selectedProject.title} 
+                                />
                                 <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
                                 <div className="absolute bottom-8 left-8">
                                     <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-[#B8965A] mb-2 block">Case Study {selectedProject.id}</span>
@@ -205,7 +212,7 @@ const Portfolio = () => {
                             <div className="p-8 md:p-12 space-y-10">
                                 <div>
                                     <h3 className={`${cormorant.className} text-3xl md:text-4xl italic font-light text-[#2A2520] mb-4`}>
-                                        "{selectedProject.tagline}"
+                                        &quot;{selectedProject.tagline}&quot;
                                     </h3>
                                     <p className="text-lg font-light leading-relaxed text-[#6B5F52]">
                                         {selectedProject.description}

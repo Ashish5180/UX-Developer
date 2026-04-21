@@ -3,17 +3,17 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
+const roles = [
+    "Visual Interaction Designer",
+    "Design Systems Architect",
+    "User Experience Strategist",
+    "Interface Narrator"
+];
+
 const Hero = () => {
     const [currentRole, setCurrentRole] = useState(0);
     const [fade, setFade] = useState(true);
     const [isLoaded, setIsLoaded] = useState(false);
-
-    const roles = [
-        "Visual Interaction Designer",
-        "Design Systems Architect",
-        "User Experience Strategist",
-        "Interface Narrator"
-    ];
 
     useEffect(() => {
         const t = setTimeout(() => setIsLoaded(true), 150);
@@ -29,7 +29,7 @@ const Hero = () => {
             }, 350);
         }, 3000);
         return () => clearInterval(interval);
-    }, []);
+    }, [roles.length]);
 
     return (
         <section

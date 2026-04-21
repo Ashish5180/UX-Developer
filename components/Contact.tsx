@@ -12,12 +12,13 @@ const Contact = () => {
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
+        const currentRef = sectionRef.current;
         const observer = new IntersectionObserver(
             ([entry]) => { if (entry.isIntersecting) setIsVisible(true); },
             { threshold: 0.1 }
         );
-        if (sectionRef.current) observer.observe(sectionRef.current);
-        return () => { if (sectionRef.current) observer.unobserve(sectionRef.current); };
+        if (currentRef) observer.observe(currentRef);
+        return () => { if (currentRef) observer.unobserve(currentRef); };
     }, []);
 
     return (
@@ -63,7 +64,7 @@ const Contact = () => {
                     <div className="relative mb-10">
                         <h2 className={`${cormorant.className} leading-[0.9] font-light mb-0 tracking-tight`}
                             style={{ fontSize: 'clamp(64px, 8vw, 110px)', color: '#2A2520' }}>
-                            Let's <br />
+                            Let&apos;s <br />
                             <span className="relative inline-block italic text-[#B8965A] font-light">
                                 craft
                                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#B8965A]/20" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -81,7 +82,7 @@ const Contact = () => {
                     </div>
 
                     <p className="font-light text-[17px] leading-[1.8] max-w-[420px] mb-12 text-[#6B5F52]">
-                        Every project is a unique dialogue between vision and execution. Whether you have a precise brief or a nebulous idea, let's refine it into something extraordinary.
+                        Every project is a unique dialogue between vision and execution. Whether you have a precise brief or a nebulous idea, let&apos;s refine it into something extraordinary.
                     </p>
 
                     {/* Connectivity Grid */}

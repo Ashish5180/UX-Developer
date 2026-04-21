@@ -220,7 +220,7 @@ const Expertise = () => {
                     
                     <div className="max-w-md">
                         <p className={`${cormorant.className} text-[#6B5F52] italic text-3xl leading-snug`}>
-                            "Visual thinking is not about decorating a page; it is about clarifying the <span className="text-[#2A2520] not-italic font-bold">intent</span> of the interface."
+                            &quot;Visual thinking is not about decorating a page; it is about clarifying the <span className="text-[#2A2520] not-italic font-bold">intent</span> of the interface.&quot;
                         </p>
                         <div className="mt-8 flex items-center gap-6">
                             <div className="w-12 h-px bg-[#B8965A]" />
