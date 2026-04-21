@@ -5,27 +5,16 @@ import { useState, useEffect, useRef } from 'react';
 const AboutMe = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [time, setTime] = useState(0);
+    const [activeTab, setActiveTab] = useState('philosophy');
     const sectionRef = useRef<HTMLDivElement>(null);
 
-    // Continuous Animation loop
-    useEffect(() => {
-        let frame: number;
-        const animate = (t: number) => {
-            setTime(t / 1000); // seconds
-            frame = requestAnimationFrame(animate);
-        };
-        frame = requestAnimationFrame(animate);
-        return () => cancelAnimationFrame(frame);
-    }, []);
-
-    // Track mouse for 3D tilt and spotlight effects
+    // Track mouse for subtle 3D parallax
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
             if (!sectionRef.current) return;
             const { left, top, width, height } = sectionRef.current.getBoundingClientRect();
-            const x = (e.clientX - left) / width - 0.5;
-            const y = (e.clientY - top) / height - 0.5;
+            const x = (e.clientX - (left + width / 2)) / (width / 2);
+            const y = (e.clientY - (top + height / 2)) / (height / 2);
             setMousePosition({ x, y });
         };
 
@@ -33,234 +22,178 @@ const AboutMe = () => {
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
 
-    // Intersection Observer for entrance animations
+    // Intersection Observer for reveal animations
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
+                if (entry.isIntersecting) setIsVisible(true);
             },
-            { threshold: 0.1 }
+            { threshold: 0.15 }
         );
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
+        if (sectionRef.current) observer.observe(sectionRef.current);
+        return () => observer.disconnect();
     }, []);
 
-    const [isDesktop, setIsDesktop] = useState(false);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsDesktop(window.innerWidth > 768);
-        };
-        handleResize();
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    const skills = [
-        { name: 'React', level: 95, color: 'from-blue-400 to-cyan-500' },
-        { name: 'TypeScript', level: 90, color: 'from-blue-600 to-indigo-500' },
-        { name: 'Next.js', level: 92, color: 'from-slate-700 to-slate-900' },
-        { name: 'Tailwind CSS', level: 98, color: 'from-cyan-400 to-teal-500' },
-        { name: 'Node.js', level: 85, color: 'from-green-500 to-emerald-600' },
-        { name: 'Figma', level: 88, color: 'from-purple-500 to-pink-500' },
+    const designPillars = [
+        { id: 'philosophy', title: 'Philosophy', icon: '✦', text: "Design is a silent language; I focus on creating purposeful interfaces that guide users through intuition and emotion." },
+        { id: 'process', title: 'Process', icon: '⚙', text: "From conceptual moodboards to high-fidelity motion prototypes, I craft visual systems with pixel-level precision." },
+        { id: 'focus', title: 'Focus', icon: '◎', text: "Specializing in visual identity, systemic elegance, and creating an aesthetic longevity that survives trends." }
     ];
 
     return (
         <section
             ref={sectionRef}
-            className="relative py-20 sm:py-32 px-4 sm:px-6 overflow-hidden bg-[#FAF9F6] min-h-screen flex flex-col justify-center"
-            id="biography"
-            style={{ perspective: '2000px' }}
+            className="relative py-16 sm:py-24 px-4 sm:px-8 overflow-hidden bg-[#FAF9F6] min-h-screen flex flex-col justify-center"
+            id="about"
         >
-            {/* Background Kinetic Layer - Continuous & Reactive */}
-            <div
-                className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{
-                    backgroundImage: `radial-gradient(circle at 2px 2px, #000 1px, transparent 0)`,
-                    backgroundSize: '60px 60px',
-                    transform: `translateZ(-200px) 
-                                rotateX(${isDesktop ? mousePosition.y * 5 + Math.sin(time * 0.5) * 2 : 0}deg) 
-                                rotateY(${isDesktop ? mousePosition.x * 5 + Math.cos(time * 0.5) * 2 : 0}deg) 
-                                scale(1.3)`,
-                    transition: 'transform 0.6s cubic-bezier(0.2, 0, 0.2, 1)'
-                }}
-            />
+            {/* Background Texture & Ambient Layer */}
+            <div className="absolute inset-0 pointer-events-none opacity-[0.03] grayscale"
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")` }} />
 
             <div className="max-w-7xl mx-auto w-full relative z-10">
-                {/* Header with Split Reveal */}
-                <div className="mb-12 sm:mb-20 overflow-hidden">
-                    <h2
-                        className={`text-4xl sm:text-6xl md:text-8xl font-black text-stone-900 mb-4 transition-all duration-1000 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-full opacity-0'}`}
-                        style={{ letterSpacing: '-0.04em' }}
-                    >
-                        THE <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 font-syne">HUMAN</span><br />
-                        BEHIND THE CODE.
-                    </h2>
-                    <div className={`h-1 bg-stone-900 rounded-full transition-all duration-1000 delay-500 ${isVisible ? 'w-24 sm:w-48 opacity-100' : 'w-0 opacity-0'}`} />
+                {/* Section Header - Editorial Style */}
+                <div className={`mb-12 sm:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                    <div className="max-w-3xl">
+                        <span className="text-[11px] font-bold text-stone-400 uppercase tracking-[0.4em] mb-4 block">Section 02 — Identity</span>
+                        <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-stone-900 leading-[1.5] tracking-tighter font-syne py-4">
+                            CRAFTING <br />
+                            <span className="inline-block py-10 px-6 -my-10 -mx-6 text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-stone-700 to-stone-500 italic font-serif font-light">Digital</span> Elegance.
+                        </h2>
+                    </div>
+                    <div className="md:text-right">
+                        <p className="text-stone-500 font-medium text-sm sm:text-base max-w-xs md:ml-auto leading-relaxed font-outfit">
+                            An Interface Specialist dedicated to bridging the gap between artistic vision and human behavior.
+                        </p>
+                    </div>
                 </div>
 
-                {/* Main Identity Grid (Bento) */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:auto-rows-[120px]">
+                {/* Main Bento Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:auto-rows-[120px]">
 
-                    {/* Bio Card - Expansive & Clean */}
-                    <div
-                        className={`md:col-span-8 md:row-span-4 bg-white rounded-[2rem] sm:rounded-[2.5rem] p-6 sm:p-10 shadow-sm border border-stone-200 relative group overflow-hidden transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                        style={{
-                            transform: isDesktop ? `rotateX(${mousePosition.y * -1.5}deg) rotateY(${mousePosition.x * 1.5}deg)` : 'none',
-                            transformStyle: 'preserve-3d'
-                        }}
-                    >
-                        <div className="relative z-10 flex flex-col h-full">
-                            <span className="text-[10px] sm:text-xs font-bold text-violet-700 uppercase tracking-widest mb-4 sm:mb-6 block border-b border-stone-100 pb-2 w-fit">Biography</span>
-                            <div className="flex-1">
-                                <p className="text-xl sm:text-2xl md:text-3xl leading-snug text-stone-900 font-semibold max-w-2xl font-outfit">
-                                    I'm an <span className="text-violet-600">aspiring full-stack developer</span> and <span className="text-fuchsia-600 font-syne">creative problem solver</span> with a relentless drive for building precision digital tools.
-                                </p>
-                                <p className="text-base sm:text-lg text-stone-600 mt-4 sm:mt-6 leading-relaxed max-w-xl font-medium">
-                                    I approach programming as an art form of logic. As a fresher, my "experience" is measured in hours of deep-work, curiosity-driven projects, and a rapid ability to master new architectures. Based in India, building for the world.
+                    {/* The Big Profile Card */}
+                    <div className={`md:col-span-12 lg:col-span-8 md:row-span-4 bg-white rounded-[2.5rem] p-6 sm:p-12 border border-stone-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)] group relative overflow-hidden transition-all duration-1000 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                        <div className="relative z-10 flex flex-col h-full justify-between">
+                            <div className="max-w-2xl">
+                                <h3 className="text-2xl sm:text-4xl font-bold text-stone-900 mb-8 font-syne leading-tight">
+                                    I am <span className="relative inline-block">
+                                        <span className="relative z-10">Nandini Yadav,</span>
+                                        <span className="absolute bottom-1 left-0 w-full h-3 bg-stone-100 -z-10 group-hover:h-full transition-all duration-500" />
+                                    </span> a visual story-teller crafting sensory digital journeys.
+                                </h3>
+                                <p className="text-lg sm:text-xl text-stone-600 leading-relaxed font-outfit font-light">
+                                    With a deep obsession for pixel-perfect interfaces and user psychology, I transform complex concepts into intuitive, high-end visual systems. Based in India, I focus on building interfaces that don't just solve problems—they evoke emotions.
                                 </p>
                             </div>
-                            <div className="mt-6 sm:mt-8 flex items-center gap-4">
-                                <div className="flex -space-x-2 sm:-space-x-3">
-                                    {[1, 2, 3].map(i => (
-                                        <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white bg-violet-50 flex items-center justify-center overflow-hidden">
-                                            <div className="w-full h-full bg-gradient-to-br from-violet-100 to-fuchsia-100" />
-                                        </div>
-                                    ))}
+
+                            <div className="mt-12 flex flex-wrap gap-12">
+                                <div>
+                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Location</span>
+                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">New Delhi, IN</span>
                                 </div>
-                                <span className="text-xs sm:text-sm text-stone-500 font-bold">Driven by innovation & clean architecture</span>
+                                <div>
+                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Capabilities</span>
+                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">UI · UX · Visual Identity</span>
+                                </div>
+                                <div>
+                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Experience</span>
+                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">Fresh Perspective</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Floating Decorative Elements */}
+                        <div className="absolute top-10 right-10 w-24 h-24 rounded-full border border-stone-100 animate-spin-slow opacity-20 pointer-events-none" />
+                        <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-stone-50 rounded-full opacity-50 blur-3xl pointer-events-none" />
+                    </div>
+
+                    {/* Skill Tags - Vertical Stack */}
+                    <div className={`md:col-span-6 lg:col-span-4 md:row-span-4 bg-stone-900 rounded-[2.5rem] p-6 sm:p-10 text-white flex flex-col justify-between transition-all duration-1000 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}>
+                        <div className="space-y-8">
+                            <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.3em]">Signature Stack</span>
+                            <div className="flex flex-wrap gap-2">
+                                {['Figma Pro', 'Grid Theory', 'Typography', 'Motion Design', 'Design Systems', 'Interface Psychology', 'Visual Hierarchy', 'Adobe CC'].map((skill) => (
+                                    <span key={skill} className="px-4 py-2 bg-stone-800 border border-stone-700 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-stone-900 transition-colors cursor-default">
+                                        {skill}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="mt-12">
+                            <div className="flex items-end gap-1 mb-2">
+                                <span className="text-5xl font-black font-syne">100%</span>
+                                <span className="text-[10px] font-bold text-stone-400 uppercase mb-2">Commitment</span>
+                            </div>
+                            <p className="text-xs text-stone-400 leading-relaxed font-outfit">
+                                Obsessed with the details that others overlook. Every interaction is an opportunity for delight.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Interactive Selection Card */}
+                    <div className={`md:col-span-7 lg:col-span-8 md:row-span-3 bg-white rounded-[2.5rem] p-6 sm:p-10 border border-stone-100 shadow-sm transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                        <div className="flex flex-col md:flex-row h-full gap-8">
+                            <div className="w-full md:w-1/3 flex flex-col gap-3">
+                                {designPillars.map((pillar) => (
+                                    <button
+                                        key={pillar.id}
+                                        onClick={() => setActiveTab(pillar.id)}
+                                        className={`px-6 py-4 rounded-2xl text-sm font-bold font-syne uppercase tracking-wider text-left transition-all ${activeTab === pillar.id ? 'bg-stone-900 text-white shadow-lg' : 'bg-stone-50 text-stone-400 hover:bg-stone-100'}`}
+                                    >
+                                        <span className="mr-3">{pillar.icon}</span>
+                                        {pillar.title}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="flex-1 flex flex-col justify-center">
+                                <p className="text-xl sm:text-2xl font-serif italic text-stone-800 leading-snug">
+                                    "{designPillars.find(p => p.id === activeTab)?.text}"
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    {/* Fresh Perspective Card - Replaces Experience */}
-                    <div
-                        className={`md:col-span-4 md:row-span-2 bg-stone-900 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 text-white flex flex-col justify-between group transition-all duration-700 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
-                    >
-                        <div className="flex items-center justify-between mb-4 md:mb-0">
-                            <span className="text-[10px] sm:text-xs font-bold text-stone-400 uppercase tracking-widest font-syne">Current Status</span>
-                            <div className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
-                        </div>
-                        <div className="mb-4 md:mb-0">
-                            <span className="text-3xl sm:text-4xl font-black block font-outfit leading-tight mb-1">FRESHER</span>
-                            <span className="text-stone-300 text-[10px] sm:text-sm font-medium uppercase tracking-tight">Eager to Build & Evolve</span>
-                        </div>
-                        <div className="w-full h-1 bg-stone-800 rounded-full overflow-hidden">
-                            <div className="h-full w-full bg-gradient-to-r from-violet-400 to-fuchsia-400" />
-                        </div>
-                    </div>
-
-                    {/* Power Stack - Vibrant Bento */}
-                    <div
-                        className={`md:col-span-4 md:row-span-2 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 text-white relative overflow-hidden transition-all duration-700 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}
-                    >
-                        <span className="text-[10px] sm:text-xs font-bold text-white/80 uppercase tracking-widest mb-4 block font-syne">Power Stack</span>
-                        <div className="grid grid-cols-2 gap-3 sm:gap-4 relative z-10">
-                            {skills.slice(0, 4).map((skill, i) => (
-                                <div key={i} className="bg-white/10 backdrop-blur-md rounded-xl p-2 sm:p-3 border border-white/20">
-                                    <span className="text-xs sm:text-sm font-bold block">{skill.name}</span>
-                                    <div className="w-full h-0.5 bg-white/20 rounded-full mt-2">
-                                        <div className="h-full bg-white rounded-full" style={{ width: `${skill.level}%` }} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Philosophy Card - Wide Bento */}
-                    <div
-                        className={`md:col-span-6 md:row-span-2 bg-white rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 border border-stone-200 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 group transition-all duration-700 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                    >
-                        <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl bg-stone-900 flex items-center justify-center shrink-0 rotate-3 group-hover:rotate-0 transition-transform">
-                            <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                            </svg>
+                    {/* Status/Availability Card */}
+                    <div className={`md:col-span-5 lg:col-span-4 md:row-span-3 bg-stone-100 rounded-[2.5rem] p-8 sm:p-10 flex flex-col justify-between group transition-all duration-1000 delay-400 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
+                        <div className="flex justify-between items-start">
+                            <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-stone-900 shadow-sm">
+                                <svg className="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <span className="text-[10px] font-bold text-stone-900 uppercase tracking-widest bg-white px-3 py-1 rounded-full shadow-sm">Status: Open</span>
                         </div>
                         <div>
-                            <h4 className="text-base sm:text-lg font-bold text-stone-900 mb-1">Philosophy</h4>
-                            <p className="text-stone-600 text-[13px] sm:text-sm italic font-semibold leading-tight pr-4">"Logic is the foundation; aesthetics is the bridge. I build bridges that last."</p>
+                            <h4 className="text-xl sm:text-2xl font-bold text-stone-900 font-syne uppercase leading-tight mb-2">Available for <br />Collaborations</h4>
+                            <p className="text-xs text-stone-500 font-medium font-outfit">Open to full-time roles & exciting freelance projects worldwide.</p>
                         </div>
-                    </div>
-
-                    {/* Location / Availability - Small Bento */}
-                    <div
-                        className={`md:col-span-3 md:row-span-2 bg-stone-50 rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 border border-stone-200 flex flex-col justify-between overflow-hidden relative transition-all duration-700 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                    >
-                        <div className="flex items-center gap-2 mb-4 md:mb-0">
-                            <div className="w-2 h-2 rounded-full bg-stone-900 animate-pulse" />
-                            <span className="text-[10px] sm:text-xs font-bold text-stone-500 uppercase tracking-widest font-syne">Available</span>
-                        </div>
-                        <h4 className="text-xl sm:text-2xl font-black text-stone-900 leading-tight font-outfit">Open to<br className="hidden sm:block" /> Opportunities</h4>
-                    </div>
-
-                    {/* Curiosity Card - Interactive Ticker - Small Bento */}
-                    <div
-                        className={`md:col-span-3 md:row-span-2 bg-white rounded-[1.5rem] sm:rounded-[2rem] p-6 sm:p-8 border border-stone-200 overflow-hidden transition-all duration-700 delay-600 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-                    >
-                        <span className="text-[10px] sm:text-xs font-bold text-stone-500 uppercase tracking-widest mb-4 block font-syne">Interests</span>
-                        <div className="space-y-4">
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-violet-50 flex items-center justify-center text-base sm:text-lg">📚</div>
-                                <div className="text-[10px] sm:text-xs">
-                                    <span className="block font-bold text-stone-800">Mastering</span>
-                                    <span className="text-stone-500 font-semibold italic">System Design</span>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-violet-50 flex items-center justify-center text-base sm:text-lg">🎧</div>
-                                <div className="text-[10px] sm:text-xs">
-                                    <span className="block font-bold text-stone-800">Listening</span>
-                                    <span className="text-stone-500 font-semibold italic">Focus Beats</span>
-                                </div>
-                            </div>
+                        <div className="w-full h-1 bg-white rounded-full overflow-hidden mt-6">
+                            <div className="h-full w-full bg-stone-900 group-hover:translate-x-full transition-transform duration-[2000ms] ease-in-out" />
                         </div>
                     </div>
 
                 </div>
 
-                {/* Perspective Floating Words - Continuous Animation and Deep Z-index */}
-                <div
-                    className="absolute top-1/2 -right-20 hidden lg:flex flex-col gap-12 opacity-[0.05] select-none pointer-events-none z-0"
+                {/* Perspective Floating Title (Background) */}
+                <div className="absolute top-1/2 -right-40 hidden xl:block select-none pointer-events-none z-[-1] opacity-[0.02]"
                     style={{
-                        transform: `translateZ(-300px) 
-                                    rotateY(${mousePosition.x * -10 + Math.sin(time * 0.4) * 5}deg) 
-                                    translateY(${mousePosition.y * 20 + Math.cos(time * 0.4) * 10}px)`
-                    }}
-                >
-                    {['INNOVATION', 'STRUCTURE', 'SPEED', 'PRECISION'].map(word => (
-                        <span key={word} className="text-9xl font-black text-stone-900 tracking-tighter">{word}</span>
-                    ))}
-                </div>
-
-                {/* Final Interactive Callout - Button Text Color Updated to Match UI Color */}
-                <div className={`mt-16 sm:mt-24 p-0.5 bg-stone-900 rounded-full inline-block transition-all duration-1000 delay-1000 transform ${isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'}`}>
-                    <div className="px-6 sm:px-10 py-4 sm:py-5 bg-white rounded-full flex items-center gap-3 sm:gap-4 group cursor-pointer hover:bg-stone-900 transition-all">
-                        <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-600 to-fuchsia-600 group-hover:text-white transition-colors uppercase tracking-widest text-[10px] sm:text-xs">
-                            Start the collaboration
-                        </span>
-                        <svg className="w-4 h-4 sm:w-5 sm:h-5 text-fuchsia-600 group-hover:text-white group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                        </svg>
-                    </div>
+                        transform: `translateY(-50%) rotate(-90deg) translateX(${mousePosition.y * 30}px)`,
+                        fontSize: '20vh',
+                        fontWeight: 950,
+                        lineHeight: 1
+                    }}>
+                    THECRAFT.
                 </div>
             </div>
 
-            {/* SVG Filter for Texture */}
-            <svg style={{ visibility: 'hidden', position: 'absolute' }} width="0" height="0">
-                <filter id="noiseFilter">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch" />
-                </filter>
-            </svg>
+            <style jsx>{`
+                @keyframes spin-slow {
+                    from { transform: rotate(0deg); }
+                    to { transform: rotate(360deg); }
+                }
+                .animate-spin-slow {
+                    animation: spin-slow 12s linear infinite;
+                }
+            `}</style>
         </section>
     );
 };
