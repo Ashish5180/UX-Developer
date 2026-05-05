@@ -5,8 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 const PersonalBranding = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [activeTypography, setActiveTypography] = useState<number | null>(null);
-    const [activePalette, setActivePalette] = useState<number | null>(null);
+    const [activeSkill, setActiveSkill] = useState<number | null>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -18,7 +17,6 @@ const PersonalBranding = () => {
                 y: e.clientY - top,
             });
         };
-
         window.addEventListener('mousemove', handleMouseMove);
         return () => window.removeEventListener('mousemove', handleMouseMove);
     }, []);
@@ -45,68 +43,73 @@ const PersonalBranding = () => {
         };
     }, []);
 
-    const fonts = [
+    const skills = [
         {
-            name: 'Playfair Display',
-            class: 'font-serif',
-            sample: 'Elegance in every serif',
-            weight: 'Timeless editorial sophistication',
-            style: { letterSpacing: '-0.02em' }
+            name: 'Figma',
+            category: 'Interface Design',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/>
+                    <path d="M12 2h3.5a3.5 3.5 0 1 1 0 7H12V2z"/>
+                    <path d="M5 12.5A3.5 3.5 0 0 1 8.5 9H12v7H8.5A3.5 3.5 0 0 1 5 12.5z"/>
+                    <path d="M12 9h3.5a3.5 3.5 0 1 1 0 7H12V9z"/>
+                    <path d="M5 19.5A3.5 3.5 0 0 1 8.5 16H12v3.5a3.5 3.5 0 1 1-7 0z"/>
+                </svg>
+            ),
+            accent: '#A259FF',
+            glow: 'rgba(162, 89, 255, 0.15)'
         },
         {
-            name: 'Montserrat',
-            class: 'font-montserrat',
-            sample: 'Clean geometric clarity',
-            weight: 'Modern precision & balance',
-            style: { letterSpacing: '0.01em' }
+            name: 'Photoshop',
+            category: 'Raster Mastery',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M9 8h2.5c1.4 0 2.5 1.1 2.5 2.5S12.9 13 11.5 13H9v4"/>
+                    <path d="M14 13c1.1 0 2 .9 2 2s-.9 2-2 2h-1"/>
+                </svg>
+            ),
+            accent: '#31A8FF',
+            glow: 'rgba(49, 168, 255, 0.15)'
         },
         {
-            name: 'Syne',
-            class: 'font-syne',
-            sample: 'Bold artistic voice',
-            weight: 'Expressive & unapologetic',
-            style: { letterSpacing: '-0.01em' }
+            name: 'Illustrator',
+            category: 'Vector Precision',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z"/>
+                    <path d="M2 17L12 22L22 17"/>
+                    <path d="M2 12L12 17L22 12"/>
+                </svg>
+            ),
+            accent: '#FF9A00',
+            glow: 'rgba(255, 154, 0, 0.15)'
         },
         {
-            name: 'Inter',
-            class: 'font-inter',
-            sample: 'Maximum readability',
-            weight: 'Engineered for interfaces',
-            style: { letterSpacing: '0' }
+            name: 'Framer',
+            category: 'Interactive Motion',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 2h14v7h-7L5 2z"/>
+                    <path d="M5 9h7l7 7H5V9z"/>
+                    <path d="M5 16l7 7v-7H5z"/>
+                </svg>
+            ),
+            accent: '#0055FF',
+            glow: 'rgba(0, 85, 255, 0.15)'
         },
         {
-            name: 'Outfit',
-            class: 'font-outfit',
-            sample: 'Warm & approachable',
-            weight: 'Friendly contemporary feel',
-            style: { letterSpacing: '0.005em' }
-        }
-    ];
-
-    const palettes = [
-        {
-            name: 'Warm Stone',
-            colors: ['#F5F0EB', '#D4C5B5', '#A69280', '#6B5B4E'],
-            accent: '#A69280',
-            vibe: 'Organic · Grounded · Warm'
-        },
-        {
-            name: 'Sage Garden',
-            colors: ['#F0F4F0', '#C5D5C5', '#8BA88B', '#4A6B4A'],
-            accent: '#8BA88B',
-            vibe: 'Calm · Natural · Fresh'
-        },
-        {
-            name: 'Dusty Rose',
-            colors: ['#FBF5F3', '#E8D4CF', '#C9A49B', '#8B6B63'],
-            accent: '#C9A49B',
-            vibe: 'Soft · Gentle · Refined'
-        },
-        {
-            name: 'Slate Blue',
-            colors: ['#F0F2F5', '#B8C4D4', '#7B91AA', '#44556B'],
-            accent: '#7B91AA',
-            vibe: 'Trustworthy · Serene · Deep'
+            name: 'Canva',
+            category: 'Visual Layouts',
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 12h8"/>
+                    <path d="M12 8v8"/>
+                </svg>
+            ),
+            accent: '#00C4CC',
+            glow: 'rgba(0, 196, 204, 0.15)'
         }
     ];
 
@@ -137,20 +140,20 @@ const PersonalBranding = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative py-32 md:py-40 px-6 overflow-hidden"
+            className="relative py-24 md:py-32 px-6 overflow-hidden"
             id="personal-branding"
             style={{ background: 'linear-gradient(180deg, #FAFAF7 0%, #F5F0EB 50%, #F0EDE8 100%)' }}
         >
-            {/* Ambient Light Orb following cursor */}
+            {/* Ambient Light Orb */}
             <div
                 className="pointer-events-none absolute inset-0 z-0 transition-opacity duration-[2000ms]"
                 style={{
-                    background: `radial-gradient(900px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(165, 146, 128, 0.06), transparent 60%)`,
+                    background: `radial-gradient(1000px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(165, 146, 128, 0.08), transparent 70%)`,
                     opacity: isVisible ? 1 : 0
                 }}
             />
 
-            {/* Subtle grain texture overlay */}
+            {/* Subtle grain texture */}
             <div
                 className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
                 style={{
@@ -158,24 +161,17 @@ const PersonalBranding = () => {
                 }}
             />
 
-            {/* Floating decorative elements */}
-            <div className="pointer-events-none absolute top-20 left-[10%] w-72 h-72 rounded-full opacity-[0.04] animate-float-slow" style={{ background: 'radial-gradient(circle, #A69280 0%, transparent 70%)' }} />
-            <div className="pointer-events-none absolute bottom-40 right-[15%] w-56 h-56 rounded-full opacity-[0.05] animate-float-varied" style={{ background: 'radial-gradient(circle, #8BA88B 0%, transparent 70%)' }} />
-
-            <div className="max-w-6xl mx-auto relative z-10">
-
+            <div className="max-w-7xl mx-auto relative z-10">
                 {/* ===== HEADER ===== */}
-                <div className={`text-center mb-28 transition-all duration-[1200ms] ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
-                    {/* Thin decorative line */}
+                <div className={`text-center mb-16 md:mb-24 transition-all duration-[1200ms] ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}>
                     <div className="flex justify-center mb-8">
                         <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#A69280] to-transparent" />
                     </div>
-                    <p className="font-outfit text-xs tracking-[0.35em] uppercase text-[#A69280] mb-6">Design Philosophy</p>
+                    <p className="font-outfit text-[11px] tracking-[0.5em] uppercase text-[#A69280] mb-6">Technical Proficiency</p>
                     <h2
-                        className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#3D3229] mb-8 leading-[0.95]"
-                        style={{ letterSpacing: '-0.03em' }}
+                        className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#3D3229] mb-8 leading-[0.9] tracking-tighter"
                     >
-                        Personal<br />
+                        Tools &<br />
                         <span
                             className="text-transparent bg-clip-text"
                             style={{
@@ -183,190 +179,93 @@ const PersonalBranding = () => {
                                 WebkitBackgroundClip: 'text',
                             }}
                         >
-                            Branding
+                            Excellence
                         </span>
                     </h2>
-                    <p className="font-outfit text-[#8A7E73] text-lg md:text-xl max-w-xl mx-auto leading-relaxed" style={{ letterSpacing: '0.01em' }}>
-                        In a world of noise, intentionality is my superpower. Here&apos;s the aesthetic and strategic foundation of my craft.
+                    <p className="font-outfit text-[#8A7E73] text-lg md:text-xl max-w-xl mx-auto leading-relaxed opacity-80" style={{ letterSpacing: '0.01em' }}>
+                        Curating digital experiences through a sophisticated blend of industry-standard creative ecosystems.
                     </p>
                 </div>
 
-                {/* ===== TYPOGRAPHY SHOWCASE ===== */}
-                <div className={`mb-28 transition-all duration-[1200ms] delay-200 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
-                    <div className="flex items-center gap-4 mb-12">
-                        <span className="w-10 h-px bg-[#A69280]" />
-                        <h3 className="font-outfit text-xs tracking-[0.3em] uppercase text-[#A69280]">Curated Typography</h3>
-                    </div>
-
-                    <div className="space-y-0">
-                        {fonts.map((font, idx) => (
+                {/* ===== SKILLS CAPSULES ===== */}
+                <div className={`mb-24 md:mb-32 transition-all duration-[1200ms] delay-300 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
+                    <div className="flex flex-wrap justify-center gap-4 md:gap-6">
+                        {skills.map((skill, idx) => (
                             <div
                                 key={idx}
-                                className="group cursor-default relative"
-                                onMouseEnter={() => setActiveTypography(idx)}
-                                onMouseLeave={() => setActiveTypography(null)}
+                                className="group relative"
+                                onMouseEnter={() => setActiveSkill(idx)}
+                                onMouseLeave={() => setActiveSkill(null)}
                             >
-                                {/* Active background highlight */}
+                                {/* Capsule Body */}
                                 <div
-                                    className="absolute inset-0 -mx-6 md:-mx-10 transition-all duration-700 ease-out rounded-2xl"
+                                    className="relative flex items-center gap-4 pl-4 pr-6 py-3 md:pl-5 md:pr-8 md:py-4 rounded-full transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)] cursor-default overflow-hidden border"
                                     style={{
-                                        background: activeTypography === idx
-                                            ? 'linear-gradient(135deg, rgba(166,146,128,0.04) 0%, rgba(139,168,139,0.03) 100%)'
-                                            : 'transparent',
+                                        background: activeSkill === idx
+                                            ? 'rgba(255, 255, 255, 1)'
+                                            : 'rgba(255, 255, 255, 0.4)',
+                                        backdropFilter: 'blur(20px)',
+                                        WebkitBackdropFilter: 'blur(20px)',
+                                        borderColor: activeSkill === idx ? `${skill.accent}30` : 'rgba(212, 197, 181, 0.25)',
+                                        boxShadow: activeSkill === idx
+                                            ? `0 20px 40px -10px ${skill.glow}, 0 0 0 1px ${skill.accent}10`
+                                            : '0 4px 20px -10px rgba(107, 91, 78, 0.05)',
+                                        transform: activeSkill === idx ? 'translateY(-5px) scale(1.02)' : 'translateY(0) scale(1)',
                                     }}
-                                />
-                                <div className="relative flex flex-col md:flex-row md:items-baseline justify-between py-7 border-b border-[#E5DDD5]/60">
-                                    <div className="flex items-baseline gap-4 md:gap-8">
-                                        <span className="font-outfit text-[10px] tracking-[0.2em] text-[#C4B8AB] tabular-nums">
-                                            {String(idx + 1).padStart(2, '0')}
+                                >
+                                    {/* Icon Container */}
+                                    <div 
+                                        className="w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center transition-all duration-700"
+                                        style={{ 
+                                            background: activeSkill === idx ? `${skill.accent}10` : 'rgba(245, 240, 235, 0.8)',
+                                            color: skill.accent,
+                                            transform: activeSkill === idx ? 'rotate(-10deg)' : 'rotate(0)'
+                                        }}
+                                    >
+                                        <div className="w-4 h-4 md:w-5 md:h-5">
+                                            {skill.icon}
+                                        </div>
+                                    </div>
+
+                                    {/* Text Label */}
+                                    <div className="flex flex-col">
+                                        <span 
+                                            className="font-outfit text-[9px] tracking-[0.25em] uppercase transition-colors duration-500"
+                                            style={{ color: activeSkill === idx ? skill.accent : '#A69280' }}
+                                        >
+                                            {skill.category}
                                         </span>
-                                        <div
-                                            className={`text-4xl md:text-6xl lg:text-7xl ${font.class} text-[#3D3229] transition-all duration-500`}
-                                            style={{
-                                                ...font.style,
-                                                color: activeTypography === idx ? '#6B5B4E' : '#3D3229',
-                                            }}
-                                        >
-                                            {font.name}
-                                        </div>
+                                        <h3 className="font-serif text-lg md:text-xl text-[#3D3229] transition-all duration-500">
+                                            {skill.name}
+                                        </h3>
                                     </div>
-                                    <div className="mt-2 md:mt-0 md:text-right ml-12 md:ml-0">
-                                        <p className={`font-outfit text-sm text-[#A69280] transition-all duration-500 ${activeTypography === idx ? 'opacity-100 translate-x-0' : 'opacity-60 md:translate-x-2'}`}>
-                                            {font.sample}
-                                        </p>
-                                        <p className={`font-outfit text-xs text-[#C4B8AB] mt-0.5 transition-all duration-500 delay-75 ${activeTypography === idx ? 'opacity-100 translate-x-0' : 'opacity-0 md:translate-x-4'}`}>
-                                            {font.weight}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
 
-                {/* ===== COLOR PALETTE SHOWCASE ===== */}
-                <div className={`mb-28 transition-all duration-[1200ms] delay-400 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-16 opacity-0'}`}>
-                    <div className="flex items-center gap-4 mb-12">
-                        <span className="w-10 h-px bg-[#8BA88B]" />
-                        <h3 className="font-outfit text-xs tracking-[0.3em] uppercase text-[#8BA88B]">Signature Palettes</h3>
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {palettes.map((palette, idx) => (
-                            <div
-                                key={idx}
-                                className="group relative rounded-3xl p-7 transition-all duration-700 ease-out cursor-default"
-                                style={{
-                                    background: activePalette === idx
-                                        ? 'rgba(255,255,255,0.85)'
-                                        : 'rgba(255,255,255,0.5)',
-                                    backdropFilter: 'blur(20px)',
-                                    WebkitBackdropFilter: 'blur(20px)',
-                                    border: `1px solid ${activePalette === idx ? palette.accent + '30' : 'rgba(212, 197, 181, 0.25)'}`,
-                                    boxShadow: activePalette === idx
-                                        ? `0 20px 60px -15px ${palette.accent}15, 0 0 0 1px ${palette.accent}10`
-                                        : '0 2px 20px -10px rgba(107, 91, 78, 0.06)',
-                                }}
-                                onMouseEnter={() => setActivePalette(idx)}
-                                onMouseLeave={() => setActivePalette(null)}
-                            >
-                                {/* Color Swatches */}
-                                <div className="flex gap-3 mb-6">
-                                    {palette.colors.map((color, cIdx) => (
-                                        <div
-                                            key={cIdx}
-                                            className="flex-1 aspect-[3/4] rounded-xl transition-all duration-500 ease-out relative overflow-hidden"
-                                            style={{
-                                                backgroundColor: color,
-                                                transform: activePalette === idx ? 'translateY(-4px)' : 'translateY(0)',
-                                                transitionDelay: `${cIdx * 50}ms`,
-                                                boxShadow: activePalette === idx
-                                                    ? `0 12px 30px -8px ${color}40`
-                                                    : '0 2px 8px -2px rgba(0,0,0,0.06)',
-                                            }}
-                                        >
-                                            {/* Hex label on hover */}
-                                            <div
-                                                className="absolute inset-0 flex items-end justify-center pb-2 transition-opacity duration-300"
-                                                style={{
-                                                    opacity: activePalette === idx ? 1 : 0,
-                                                }}
-                                            >
-                                                <span
-                                                    className="font-mono text-[9px] tracking-wider px-1.5 py-0.5 rounded-md"
-                                                    style={{
-                                                        color: cIdx < 2 ? '#6B5B4E' : '#F5F0EB',
-                                                        background: cIdx < 2 ? 'rgba(107,91,78,0.08)' : 'rgba(255,255,255,0.15)',
-                                                    }}
-                                                >
-                                                    {color}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-
-                                {/* Palette Info */}
-                                <div className="flex items-end justify-between">
-                                    <div>
-                                        <h4 className="font-serif text-lg text-[#3D3229] mb-1" style={{ letterSpacing: '-0.01em' }}>
-                                            {palette.name}
-                                        </h4>
-                                        <p className="font-outfit text-xs text-[#A69280] tracking-wide">
-                                            {palette.vibe}
-                                        </p>
-                                    </div>
-                                    {/* Small accent dot */}
-                                    <div
-                                        className="w-3 h-3 rounded-full transition-transform duration-500"
+                                    {/* Animated Background Highlight */}
+                                    <div 
+                                        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                                         style={{
-                                            backgroundColor: palette.accent,
-                                            transform: activePalette === idx ? 'scale(1.5)' : 'scale(1)',
-                                            opacity: 0.6,
+                                            background: `linear-gradient(135deg, ${skill.accent}05, transparent 80%)`
                                         }}
                                     />
                                 </div>
                             </div>
                         ))}
                     </div>
-
-                    {/* Brand Philosophy Callout */}
-                    <div className="mt-10 rounded-3xl p-8 md:p-10 relative overflow-hidden"
-                        style={{
-                            background: 'linear-gradient(135deg, rgba(245,240,235,0.8) 0%, rgba(240,244,240,0.6) 50%, rgba(240,237,232,0.8) 100%)',
-                            backdropFilter: 'blur(30px)',
-                            border: '1px solid rgba(212, 197, 181, 0.2)',
-                        }}
-                    >
-                        <div className="relative z-10 max-w-2xl">
-                            <p className="font-outfit text-xs tracking-[0.3em] uppercase text-[#A69280] mb-4">Philosophy</p>
-                            <p className="font-serif text-2xl md:text-3xl text-[#3D3229] leading-snug mb-4" style={{ letterSpacing: '-0.02em' }}>
-                                &ldquo;Design is a silent ambassador of your brand.&rdquo;
-                            </p>
-                            <p className="font-outfit text-[#8A7E73] text-sm leading-relaxed max-w-lg">
-                                I focus on creating harmony between form and function — where every element earns its place, and restraint becomes the ultimate expression of confidence.
-                            </p>
-                        </div>
-                        {/* Decorative accent */}
-                        <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-[0.06] -mr-16 -mt-16" style={{ background: 'radial-gradient(circle, #8BA88B, transparent)' }} />
-                        <div className="absolute bottom-0 right-20 w-32 h-32 rounded-full opacity-[0.04] mb-[-40px]" style={{ background: 'radial-gradient(circle, #C9A49B, transparent)' }} />
-                    </div>
                 </div>
 
                 {/* ===== WHY ME SECTION ===== */}
-                <div className={`mb-28 transition-all duration-[1200ms] delay-600 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-                    <div className="text-center mb-20">
+                <div className={`mb-24 md:mb-32 transition-all duration-[1200ms] delay-600 ease-out transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
+                    <div className="text-center mb-16 md:mb-20">
                         <div className="flex justify-center mb-8">
                             <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#C9A49B] to-transparent" />
                         </div>
                         <h3
-                            className="font-serif text-4xl md:text-6xl text-[#3D3229] mb-4"
-                            style={{ letterSpacing: '-0.03em' }}
+                            className="font-serif text-4xl md:text-6xl text-[#3D3229] mb-4 tracking-tight"
                         >
-                            Why Me?
+                            Why Collaborate?
                         </h3>
-                        <p className="font-outfit text-[#A69280] text-sm tracking-wide">
-                            Three pillars of my professional ethos
+                        <p className="font-outfit text-[#A69280] text-[10px] tracking-[0.4em] uppercase">
+                            The pillars of my professional craft
                         </p>
                     </div>
 
@@ -374,60 +273,60 @@ const PersonalBranding = () => {
                         {whyMe.map((item, idx) => (
                             <div
                                 key={idx}
-                                className="group relative rounded-3xl p-8 md:p-10 transition-all duration-700 ease-out hover:-translate-y-2"
+                                className="group relative rounded-[2rem] p-8 md:p-10 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)] hover:-translate-y-3"
                                 style={{
-                                    background: 'rgba(255,255,255,0.55)',
-                                    backdropFilter: 'blur(20px)',
-                                    WebkitBackdropFilter: 'blur(20px)',
+                                    background: 'rgba(255, 255, 255, 0.5)',
+                                    backdropFilter: 'blur(30px)',
+                                    WebkitBackdropFilter: 'blur(30px)',
                                     border: '1px solid rgba(212, 197, 181, 0.2)',
                                 }}
                             >
-                                {/* Hover glow */}
+                                {/* Hover Glow Effect */}
                                 <div
-                                    className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                                    className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"
                                     style={{
-                                        boxShadow: `0 25px 60px -15px ${item.accentColor}20, 0 0 0 1px ${item.accentColor}15`,
+                                        boxShadow: `0 40px 80px -20px ${item.accentColor}15, 0 0 0 1px ${item.accentColor}10`,
                                     }}
                                 />
 
-                                {/* Number */}
-                                <div className="mb-10">
-                                    <span
-                                        className="font-serif text-6xl md:text-7xl font-light transition-colors duration-500"
-                                        style={{
-                                            color: item.accentColor,
-                                            opacity: 0.2,
-                                        }}
-                                    >
-                                        {item.number}
-                                    </span>
-                                </div>
+                                <div className="relative z-10">
+                                    <div className="mb-8 flex justify-between items-start">
+                                        <span
+                                            className="font-serif text-6xl md:text-7xl font-light opacity-[0.15] transition-all duration-700 group-hover:opacity-30 group-hover:scale-110 origin-left"
+                                            style={{ color: item.accentColor }}
+                                        >
+                                            {item.number}
+                                        </span>
+                                        <div 
+                                            className="w-8 h-8 rounded-full border border-current opacity-20 flex items-center justify-center"
+                                            style={{ color: item.accentColor }}
+                                        >
+                                            <div className="w-1 h-1 rounded-full bg-current" />
+                                        </div>
+                                    </div>
 
-                                {/* Question label */}
-                                <p className="font-outfit text-[10px] tracking-[0.25em] uppercase mb-3" style={{ color: item.accentColor }}>
-                                    {item.question}
-                                </p>
+                                    <p className="font-outfit text-[9px] tracking-[0.3em] uppercase mb-3 opacity-60" style={{ color: item.accentColor }}>
+                                        {item.question}
+                                    </p>
 
-                                {/* Title */}
-                                <h4 className="font-serif text-2xl md:text-[1.75rem] text-[#3D3229] mb-5 leading-tight" style={{ letterSpacing: '-0.02em' }}>
-                                    {item.title}
-                                </h4>
+                                    <h4 className="font-serif text-2xl text-[#3D3229] mb-4 leading-tight tracking-tight">
+                                        {item.title}
+                                    </h4>
 
-                                {/* Description */}
-                                <p className="font-outfit text-[#8A7E73] text-sm leading-relaxed mb-8">
-                                    {item.text}
-                                </p>
+                                    <p className="font-outfit text-[#8A7E73] text-xs md:text-sm leading-relaxed opacity-90">
+                                        {item.text}
+                                    </p>
 
-                                {/* Subtle CTA arrow */}
-                                <div className="flex items-center gap-3 group-hover:gap-5 transition-all duration-500">
-                                    <span className="w-8 h-px transition-all duration-500 group-hover:w-12" style={{ backgroundColor: item.accentColor }} />
-                                    <svg
-                                        className="w-3.5 h-3.5 transition-transform duration-500 group-hover:translate-x-1"
-                                        style={{ color: item.accentColor }}
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                    </svg>
+                                    <div className="mt-8 flex items-center gap-4 group-hover:gap-6 transition-all duration-700">
+                                        <div className="h-[1px] w-8 transition-all duration-700 group-hover:w-12" style={{ backgroundColor: item.accentColor }} />
+                                        <svg
+                                            className="w-3 h-3 transition-transform duration-700 group-hover:translate-x-2"
+                                            style={{ color: item.accentColor }}
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                        >
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -435,29 +334,31 @@ const PersonalBranding = () => {
                 </div>
 
                 {/* ===== CTA SECTION ===== */}
-                <div className={`transition-all duration-[1200ms] delay-800 ease-out transform ${isVisible ? 'scale-100 opacity-100' : 'scale-[0.97] opacity-0'}`}>
+                <div className={`transition-all duration-[1500ms] delay-800 ease-[cubic-bezier(0.19,1,0.22,1)] transform ${isVisible ? 'scale-100 opacity-100' : 'scale-[0.98] opacity-0'}`}>
                     <div
-                        className="relative rounded-[2.5rem] p-12 md:p-16 overflow-hidden"
+                        className="relative rounded-[2.5rem] md:rounded-[3.5rem] p-10 md:p-16 lg:p-20 overflow-hidden"
                         style={{
                             background: 'linear-gradient(145deg, #3D3229 0%, #2A231C 50%, #1E1914 100%)',
                         }}
                     >
-                        {/* Ambient light decorations */}
-                        <div className="absolute top-0 right-0 w-80 h-80 rounded-full opacity-[0.08] -mr-24 -mt-24" style={{ background: 'radial-gradient(circle, #C9A49B, transparent)' }} />
-                        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full opacity-[0.06] -ml-20 -mb-20" style={{ background: 'radial-gradient(circle, #8BA88B, transparent)' }} />
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-[0.03]" style={{ background: 'radial-gradient(circle, #7B91AA, transparent)' }} />
+                        {/* Dynamic Ambient Light */}
+                        <div className="absolute top-0 right-0 w-[400px] h-[400px] rounded-full opacity-[0.1] -mr-40 -mt-40" style={{ background: 'radial-gradient(circle, #C9A49B, transparent)' }} />
+                        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full opacity-[0.08] -ml-30 -mb-30" style={{ background: 'radial-gradient(circle, #8BA88B, transparent)' }} />
 
-                        <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
-                            <div className="max-w-lg">
-                                <p className="font-outfit text-xs tracking-[0.3em] uppercase text-[#A69280] mb-6">Let&apos;s Collaborate</p>
+                        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+                            <div className="max-w-xl text-center lg:text-left">
+                                <div className="inline-flex items-center gap-3 mb-6">
+                                    <div className="w-6 h-[1px] bg-[#A69280]" />
+                                    <p className="font-outfit text-[10px] tracking-[0.4em] uppercase text-[#A69280]">Collaboration</p>
+                                </div>
                                 <h3
-                                    className="font-serif text-3xl md:text-5xl text-[#F5F0EB] mb-5 leading-[1.1]"
-                                    style={{ letterSpacing: '-0.02em' }}
+                                    className="font-serif text-3xl md:text-5xl text-[#F5F0EB] mb-6 leading-[1.1] tracking-tighter"
                                 >
-                                    Let&apos;s build something iconic.
+                                    Let&apos;s architect<br />
+                                    <span className="italic text-[#A69280]">the future</span> together.
                                 </h3>
-                                <p className="font-outfit text-[#A69280] text-sm md:text-base leading-relaxed">
-                                    Whether you&apos;re envisioning a fresh design system or a thoughtful digital experience, I&apos;m here to bring your vision to life with care and craft.
+                                <p className="font-outfit text-[#A69280] text-sm md:text-base leading-relaxed opacity-80 max-w-lg">
+                                    Whether you&apos;re envisioning a fresh design system or a thoughtful digital experience, I&apos;m here to bring your vision to life with precision and craft.
                                 </p>
                             </div>
 
@@ -470,24 +371,21 @@ const PersonalBranding = () => {
                                         window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
                                     }
                                 }}
-                                className="group relative px-10 py-5 rounded-2xl font-outfit text-sm font-medium tracking-[0.1em] uppercase transition-all duration-500 active:scale-[0.97] overflow-hidden"
+                                className="group relative px-10 py-5 rounded-full font-outfit text-[10px] font-bold tracking-[0.2em] uppercase transition-all duration-700 active:scale-[0.95] overflow-hidden"
                                 style={{
                                     background: 'linear-gradient(135deg, #F5F0EB 0%, #E8DDD5 100%)',
                                     color: '#3D3229',
-                                    boxShadow: '0 10px 40px -10px rgba(0,0,0,0.3)',
+                                    boxShadow: '0 20px 50px -10px rgba(0,0,0,0.4)',
                                 }}
                             >
-                                <span className="relative z-10">Get in Touch</span>
-                                {/* Hover fill */}
+                                <span className="relative z-10 transition-colors duration-700 group-hover:text-white">Start a Project</span>
+                                {/* Background Slider */}
                                 <div
-                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                                    className="absolute inset-0 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)]"
                                     style={{
                                         background: 'linear-gradient(135deg, #A69280 0%, #8BA88B 100%)',
                                     }}
                                 />
-                                <span className="absolute inset-0 flex items-center justify-center font-outfit text-sm font-medium tracking-[0.1em] uppercase text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
-                                    Get in Touch
-                                </span>
                             </button>
                         </div>
                     </div>

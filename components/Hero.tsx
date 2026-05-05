@@ -269,34 +269,6 @@ const Hero = () => {
                     <button
                         style={{
                             padding: '13px 30px',
-                            background: '#2A2520',
-                            color: '#FAF8F5',
-                            fontSize: '10px',
-                            letterSpacing: '0.2em',
-                            textTransform: 'uppercase',
-                            fontWeight: 500,
-                            border: 'none',
-                            borderRadius: '2px',
-                            cursor: 'pointer',
-                            fontFamily: 'var(--font-inter), sans-serif',
-                            transition: 'all 0.35s ease',
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.background = '#4A4035';
-                            e.currentTarget.style.transform = 'translateY(-2px)';
-                            e.currentTarget.style.boxShadow = '0 6px 20px rgba(42,37,32,0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.background = '#2A2520';
-                            e.currentTarget.style.transform = 'translateY(0)';
-                            e.currentTarget.style.boxShadow = 'none';
-                        }}
-                    >
-                        View Portfolio
-                    </button>
-                    <button
-                        style={{
-                            padding: '13px 30px',
                             background: 'transparent',
                             color: '#6B5F52',
                             fontSize: '10px',
@@ -313,15 +285,61 @@ const Hero = () => {
                             e.currentTarget.style.borderColor = '#2A2520';
                             e.currentTarget.style.color = '#2A2520';
                             e.currentTarget.style.transform = 'translateY(-2px)';
+                            e.currentTarget.style.background = 'rgba(42, 37, 32, 0.02)';
                         }}
                         onMouseLeave={(e) => {
                             e.currentTarget.style.borderColor = '#D1C7B8';
                             e.currentTarget.style.color = '#6B5F52';
                             e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.background = 'transparent';
                         }}
                     >
-                        Download CV
+                        View Portfolio
                     </button>
+                    <a
+                        href="/Nandini Uxui resume.pdf"
+                        download="Nandini_Yadav_Resume.pdf"
+                        className="group flex items-center gap-3"
+                        style={{
+                            padding: '13px 30px',
+                            background: '#B8965A',
+                            color: '#FAF8F5',
+                            fontSize: '10px',
+                            letterSpacing: '0.2em',
+                            textTransform: 'uppercase',
+                            fontWeight: 600,
+                            border: '1px solid #B8965A',
+                            borderRadius: '2px',
+                            cursor: 'pointer',
+                            fontFamily: 'var(--font-inter), sans-serif',
+                            transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
+                            textDecoration: 'none',
+                            boxShadow: '0 10px 25px -5px rgba(184, 150, 90, 0.3)',
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.background = '#2A2520';
+                            e.currentTarget.style.borderColor = '#2A2520';
+                            e.currentTarget.style.transform = 'translateY(-3px)';
+                            e.currentTarget.style.boxShadow = '0 15px 30px -10px rgba(42, 37, 32, 0.4)';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.background = '#B8965A';
+                            e.currentTarget.style.borderColor = '#B8965A';
+                            e.currentTarget.style.transform = 'translateY(0)';
+                            e.currentTarget.style.boxShadow = '0 10px 25px -5px rgba(184, 150, 90, 0.3)';
+                        }}
+                    >
+                        <span className="relative z-10">Download CV</span>
+                        <svg 
+                            width="14" height="14" viewBox="0 0 24 24" fill="none" 
+                            stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                            className="transition-transform duration-500 group-hover:translate-y-0.5 relative z-10"
+                        >
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                    </a>
                 </div>
 
                 {/* Watermark */}

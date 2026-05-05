@@ -23,10 +23,26 @@ const Icons = {
 const projects = [
     {
         id: "01",
-        title: "Blinkit",
+        title: "NOOR Brand Identity",
+        role: "Brand Identity",
+        tagline: "Minimal Skincare Focus",
+        description: "Created a minimal skincare brand focused on purity and ritual, bridging the gap between clinical effectiveness and organic luxury.",
+        detailedPoints: [
+            { label: "Logo System", text: "Designed logo system with a clean, timeless visual style that reflects the brand's core values.", Icon: Icons.Diamond },
+            { label: "Color Palette", text: "Developed earthy color palette for a calm, premium feel using nature-inspired tones.", Icon: Icons.Flash },
+            { label: "Typography", text: "Selected typography to enhance elegance and readability across all brand touchpoints.", Icon: Icons.Target },
+            { label: "Packaging", text: "Designed packaging and collaterals for a cohesive brand experience that resonates with consumers.", Icon: Icons.Device },
+            { label: "Brand Strategy", text: "Developed a comprehensive brand strategy focused on ritualistic skincare and purity.", Icon: Icons.Users }
+        ],
+        image: "/brand_set_2.jpg",
+        pdf: "/NOOR_Brand_Identity.pptx.pdf"
+    },
+    {
+        id: "02",
+        title: "Blinkit UX Audit",
         role: "UX Audit",
-        tagline: "Enhancing User Retention via Heuristics",
-        description: "A deep-dive audit using Nielsen’s 10 principles to resolve checkout friction and pricing transparency.",
+        tagline: "Heuristic Evaluation & Strategy",
+        description: "A deep-dive audit using Nielsen’s 10 principles to resolve checkout friction and pricing transparency for India's leading quick-commerce app.",
         detailedPoints: [
             { label: "Heuristic Evaluation", text: "Audited the interface using Nielsen’s principles to identify critical friction points.", Icon: Icons.Search },
             { label: "Navigation Overhaul", text: "Redesigned back-button logic and added a dedicated home icon for direct movement.", Icon: Icons.Target },
@@ -34,44 +50,15 @@ const projects = [
             { label: "Feature Integration", text: "Recommended delivery scheduling and product reviews to match industry standards.", Icon: Icons.Flash },
             { label: "Accessibility", text: "Added language flexibility options to cater to a diverse, multilingual Indian user base.", Icon: Icons.Globe }
         ],
-        image: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-        id: "02",
-        title: "HealthGuard",
-        role: "Patient Portal",
-        tagline: "Healthcare Accessibility Gaps",
-        description: "Mobile-first responsive design tailored for elderly users with inclusive UX and emergency rapid-access.",
-        detailedPoints: [
-            { label: "Mobile-First Design", text: "Developed a responsive portal optimized for smartphones, the primary device.", Icon: Icons.Device },
-            { label: "Inclusive UX", text: "Tailored the interface for elderly users through simplified language and high-contrast visuals.", Icon: Icons.Users },
-            { label: "Emergency Integration", text: "Streamlined information architecture for rapid access to ambulance services.", Icon: Icons.Flash },
-            { label: "Security & Trust", text: "Integrated End-to-End Encryption and 2FA to address medical data privacy.", Icon: Icons.Security },
-            { label: "Operational Efficiency", text: "Simplified feedback loops with automated reminders and real-time chat.", Icon: Icons.Chart }
-        ],
-        image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2000&auto=format&fit=crop",
+        image: "/blinkit.jpeg",
+        pdf: "/Blinkit.pdf"
     },
     {
         id: "03",
-        title: "Census Dev",
-        role: "Gov-Tech",
-        tagline: "Modernizing National Data Collection",
-        description: "Streamlined digital flows reducing resource waste. Designed offline modes for rural accessibility.",
-        detailedPoints: [
-            { label: "Process Automation", text: "Transitioned manual systems into digital flows, reducing paper waste and error.", Icon: Icons.Flash },
-            { label: "Verified Security", text: "Designed a secure login system using government IDs and OTP verification.", Icon: Icons.Security },
-            { label: "Persona-Driven", text: "Created specialized user journeys for rural residents, including audio instructions.", Icon: Icons.Users },
-            { label: "Connectivity", text: "Implemented offline data entry modes to accommodate areas with unstable internet.", Icon: Icons.Globe },
-            { label: "Publicity Strategy", text: "Developed a 'Herofying' campaign to boost national participation through social proof.", Icon: Icons.Target }
-        ],
-        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2000&auto=format&fit=crop",
-    },
-    {
-        id: "04",
-        title: "Smart Hostel",
-        role: "Management",
-        tagline: "Student Grievance Redressal",
-        description: "Replaced manual logs with a unified dashboard. Validated through research with 130+ students.",
+        title: "Smart Hostel Management",
+        role: "Management System",
+        tagline: "Centralized Grievance Redressal",
+        description: "Replaced manual logs with a unified dashboard. Validated through primary research with over 130 students.",
         detailedPoints: [
             { label: "Centralized Hub", text: "Replaced fragmented logs with a unified platform for reporting maintenance issues.", Icon: Icons.Diamond },
             { label: "Status Tracking", text: "Introduced real-time progress bars, eliminating repeated verbal follow-ups.", Icon: Icons.Chart },
@@ -79,7 +66,24 @@ const projects = [
             { label: "Accountability", text: "Created a timestamped system for hostel staff to ensure no complaint is ignored.", Icon: Icons.Target },
             { label: "User Empathy", text: "Developed empathy maps to address student frustrations regarding transparency.", Icon: Icons.Users }
         ],
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000&auto=format&fit=crop",
+        image: "/smarthostel.jpeg",
+        pdf: "/Smart Hostel Managment.pdf"
+    },
+    {
+        id: "04",
+        title: "Design Thinking Narrative",
+        role: "Case Study",
+        tagline: "Human-Centered Problem Solving",
+        description: "A comprehensive exploration of design thinking methodologies applied to complex user challenges.",
+        detailedPoints: [
+            { label: "Empathy Mapping", text: "Deep-dived into user frustrations and needs through extensive interview cycles.", Icon: Icons.Users },
+            { label: "Ideation Loops", text: "Iterated through multiple rapid prototyping phases to find the optimal solution.", Icon: Icons.Flash },
+            { label: "User Testing", text: "Validated concepts with real users to ensure usability and value alignment.", Icon: Icons.Search },
+            { label: "Strategy Design", text: "Crafted long-term product roadmaps based on qualitative and quantitative data.", Icon: Icons.Target },
+            { label: "Outcome Delivery", text: "Ensured the final design met both business goals and user expectations.", Icon: Icons.Globe }
+        ],
+        image: "/census.jpeg",
+        pdf: "/DESIGN THiNKING.pdf"
     }
 ];
 
@@ -106,26 +110,26 @@ const Portfolio = () => {
         <section
             ref={sectionRef}
             id="portfolio"
-            className={`${jost.className} relative py-12 md:py-16 overflow-hidden bg-[#FAF8F5]`}
+            className={`${jost.className} relative py-20 md:py-24 overflow-hidden bg-[#FAF8F5]`}
         >
             {/* Background Watermark */}
             <div className="absolute top-0 right-0 w-1/3 h-full border-l border-stone-100 flex items-center justify-center opacity-40 pointer-events-none">
                 <span className={`${cormorant.className} -rotate-90 text-[18vw] font-light text-stone-200/50 select-none`}>
-                    CATALOGUE
+                    ARCHIVE
                 </span>
             </div>
 
             <div className="max-w-[1400px] mx-auto px-6 relative z-10">
-                
+
                 {/* ── HEADER ── */}
-                <div className={`mb-12 flex flex-col md:flex-row md:items-end justify-between transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+                <div className={`mb-16 flex flex-col md:flex-row md:items-end justify-between transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
                     <div className="max-w-2xl">
                         <div className="flex gap-4 items-center mb-4">
-                            <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-[#B8965A]">Portfolio Archives</span>
+                            <span className="text-[11px] font-bold tracking-[0.5em] uppercase text-[#B8965A]">Visual Case Studies</span>
                             <div className="flex-1 h-px bg-[#B8965A]/20" />
                         </div>
                         <h2 className={`${cormorant.className} text-6xl md:text-8xl font-light text-[#2A2520] tracking-tighter leading-none`}>
-                            Case <span className="italic font-normal">Vault.</span>
+                            Project <span className="italic font-normal">Vault.</span>
                         </h2>
                     </div>
                 </div>
@@ -133,17 +137,17 @@ const Portfolio = () => {
                 {/* ── GRID ── */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 border-y border-stone-200">
                     {projects.map((project, idx) => (
-                        <div 
+                        <div
                             key={project.id}
-                            className={`group cursor-pointer relative bg-white p-8 transition-all duration-700 hover:bg-[#FAF8F5] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'} delay-${idx * 100}`}
+                            className={`group cursor-pointer relative bg-white p-8 md:p-12 transition-all duration-700 hover:bg-[#FAF8F5] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'} delay-${idx * 100}`}
                             onClick={() => setSelectedProject(project)}
                         >
-                            <div className="flex justify-between items-start mb-6">
+                            <div className="flex justify-between items-start mb-8">
                                 <div className="space-y-1">
                                     <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8965A]">
                                         {project.role}
                                     </span>
-                                    <h3 className={`${cormorant.className} text-4xl md:text-5xl font-light text-[#2A2520]`}>
+                                    <h3 className={`${cormorant.className} text-4xl md:text-5xl lg:text-6xl font-light text-[#2A2520] leading-none`}>
                                         {project.title}
                                     </h3>
                                 </div>
@@ -152,21 +156,21 @@ const Portfolio = () => {
                                 </span>
                             </div>
 
-                            <div className="relative w-full aspect-[16/9] mb-8 overflow-hidden bg-stone-50 transition-all duration-700 group-hover:shadow-[0_40px_100px_-20px_rgba(42,37,32,0.15)]">
-                                <Image 
-                                    src={project.image} 
-                                    alt={project.title} 
+                            <div className="relative w-full aspect-[16/10] mb-8 overflow-hidden rounded-sm bg-stone-50 transition-all duration-700 group-hover:shadow-[0_40px_100px_-20px_rgba(42,37,32,0.15)]">
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
                                     fill
                                     className="object-cover grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                                 />
                             </div>
 
                             <div className="space-y-4">
-                                <p className={`${cormorant.className} text-xl md:text-2xl text-[#2A2520] italic font-light leading-tight`}>
+                                <p className={`${cormorant.className} text-2xl md:text-3xl text-[#2A2520] italic font-light leading-tight opacity-80`}>
                                     &quot;{project.tagline}&quot;
                                 </p>
-                                <div className="flex items-center gap-3 text-[#B8965A] border-t border-stone-100 pt-6 group-hover:translate-x-2 transition-transform duration-500">
-                                    <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Enter Archive</span>
+                                <div className="flex items-center gap-3 text-[#B8965A] border-t border-stone-100 pt-8 group-hover:translate-x-2 transition-transform duration-500">
+                                    <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Open Archive</span>
                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
@@ -180,62 +184,62 @@ const Portfolio = () => {
             {/* ── COMPACT MODAL ── */}
             {selectedProject && (
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8">
-                    <div className="absolute inset-0 bg-stone-900/80 backdrop-blur-md" onClick={() => setSelectedProject(null)} />
-                    
-                    <div className="relative w-full max-w-[1100px] max-h-[85vh] bg-[#FAF8F5] overflow-y-auto shadow-2xl rounded-sm animate-in zoom-in-95 slide-in-from-bottom-5">
-                        <button 
-                            className="absolute top-6 right-6 z-20 w-10 h-10 flex items-center justify-center border border-stone-200 rounded-full hover:bg-stone-900 hover:text-white transition-all bg-white"
+                    <div className="absolute inset-0 bg-stone-900/90 backdrop-blur-sm" onClick={() => setSelectedProject(null)} />
+
+                    <div className="relative w-full max-w-[1200px] max-h-[90vh] bg-[#FAF8F5] overflow-y-auto shadow-2xl rounded-sm animate-in zoom-in-95 slide-in-from-bottom-5">
+                        <button
+                            className="absolute top-8 right-8 z-20 w-12 h-12 flex items-center justify-center border border-stone-200 rounded-full hover:bg-[#2A2520] hover:text-white transition-all bg-white shadow-sm"
                             onClick={() => setSelectedProject(null)}
                         >
-                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>
 
-                        <div className="grid grid-cols-1 md:grid-cols-[1fr_1.4fr]">
-                            <div className="relative h-[300px] md:h-auto overflow-hidden">
-                                <Image 
-                                    src={selectedProject.image} 
+                        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr]">
+                            <div className="relative h-[400px] lg:h-auto overflow-hidden">
+                                <Image
+                                    src={selectedProject.image}
                                     fill
-                                    className="object-cover grayscale" 
-                                    alt={selectedProject.title} 
+                                    className="object-cover grayscale"
+                                    alt={selectedProject.title}
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent" />
-                                <div className="absolute bottom-8 left-8">
-                                    <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-[#B8965A] mb-2 block">Case Study {selectedProject.id}</span>
-                                    <h2 className={`${cormorant.className} text-5xl md:text-7xl text-white font-light leading-none`}>
+                                <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent" />
+                                <div className="absolute bottom-10 left-10">
+                                    <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-[#B8965A] mb-3 block">Case Archive {selectedProject.id}</span>
+                                    <h2 className={`${cormorant.className} text-6xl lg:text-8xl text-white font-light leading-none tracking-tighter`}>
                                         {selectedProject.title}
                                     </h2>
                                 </div>
                             </div>
 
-                            <div className="p-8 md:p-12 space-y-10">
+                            <div className="p-10 md:p-16 space-y-12">
                                 <div>
-                                    <h3 className={`${cormorant.className} text-3xl md:text-4xl italic font-light text-[#2A2520] mb-4`}>
+                                    <h3 className={`${cormorant.className} text-4xl md:text-5xl italic font-light text-[#2A2520] mb-6 leading-tight`}>
                                         &quot;{selectedProject.tagline}&quot;
                                     </h3>
-                                    <p className="text-lg font-light leading-relaxed text-[#6B5F52]">
+                                    <p className="text-xl font-light leading-relaxed text-[#6B5F52] opacity-90">
                                         {selectedProject.description}
                                     </p>
                                 </div>
 
-                                <div className="space-y-6">
-                                    <div className="flex items-center gap-3">
-                                        <div className="w-8 h-px bg-[#B8965A]/40" />
-                                        <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#B8965A]">Strategic Pillars</span>
+                                <div className="space-y-8">
+                                    <div className="flex items-center gap-4">
+                                        <div className="w-12 h-[1px] bg-[#B8965A]/40" />
+                                        <span className="text-[11px] font-bold tracking-[0.4em] uppercase text-[#B8965A]">Strategic Pillars</span>
                                     </div>
-                                    
-                                    <div className="space-y-6">
+
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                         {selectedProject.detailedPoints.map((point, pIdx) => (
-                                            <div key={pIdx} className="flex gap-5 group/item">
-                                                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-white border border-stone-100 rounded-lg text-[#B8965A] transition-all group-hover/item:border-[#B8965A]">
+                                            <div key={pIdx} className="flex gap-6 group/item">
+                                                <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-white border border-stone-100 rounded-xl text-[#B8965A] transition-all group-hover/item:border-[#B8965A] shadow-sm">
                                                     <point.Icon />
                                                 </div>
-                                                <div className="space-y-0.5">
-                                                    <h4 className="text-[12px] font-bold tracking-[0.1em] uppercase text-[#2A2520]">
+                                                <div className="space-y-1">
+                                                    <h4 className="text-[13px] font-bold tracking-[0.1em] uppercase text-[#2A2520]">
                                                         {point.label}
                                                     </h4>
-                                                    <p className="text-[15px] font-light text-[#6B5F52] opacity-80 leading-snug">
+                                                    <p className="text-[16px] font-light text-[#6B5F52] opacity-80 leading-snug">
                                                         {point.text}
                                                     </p>
                                                 </div>
@@ -244,11 +248,19 @@ const Portfolio = () => {
                                     </div>
                                 </div>
 
-                                <div className="pt-8 border-t border-stone-100 flex items-center justify-between">
-                                    <span className="text-[9px] font-bold tracking-[0.4em] uppercase text-[#A09385]">ARCHIVE 2025</span>
-                                    <button className="px-8 py-3 bg-[#2A2520] text-white text-[10px] font-bold tracking-[0.4em] uppercase hover:bg-[#B8965A] transition-all">
+                                <div className="pt-10 border-t border-stone-100 flex flex-col md:flex-row items-center justify-between gap-8">
+                                    <div className="flex flex-col items-center md:items-start">
+                                        <span className="text-[10px] font-bold tracking-[0.5em] uppercase text-[#A09385] mb-1">ARCHIVE 2025</span>
+                                        <span className="text-[10px] font-medium text-[#B8965A]">Proprietary Case Content</span>
+                                    </div>
+                                    <a
+                                        href={selectedProject.pdf}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full md:w-auto px-12 py-4 bg-[#2A2520] text-white text-[11px] font-bold tracking-[0.4em] uppercase hover:bg-[#B8965A] transition-all text-center rounded-sm shadow-xl"
+                                    >
                                         View Case Study
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -260,7 +272,7 @@ const Portfolio = () => {
                 @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
                 @keyframes zoom-in-95 { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
                 @keyframes slide-in-from-bottom-5 { from { transform: translateY(5%); } to { transform: translateY(0); } }
-                .animate-in { animation-duration: 500ms; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); animation-fill-mode: forwards; }
+                .animate-in { animation-duration: 600ms; animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); animation-fill-mode: forwards; }
                 .zoom-in-95 { animation-name: zoom-in-95; }
                 .slide-in-from-bottom-5 { animation-name: slide-in-from-bottom-5; }
             `}</style>
@@ -269,6 +281,3 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
-
-
-
