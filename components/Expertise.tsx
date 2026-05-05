@@ -8,57 +8,56 @@ const jost = Jost({ subsets: ['latin'], weight: ['200', '300', '400', '500', '60
 
 const skills = [
     {
-        id: 'uiux',
-        title: 'Experience Architecture',
-        shortTitle: 'UX STRATEGY',
-        tools: ['User Psychology', 'Information Logic', 'Wireframe Sprints', 'Empathy Mapping'],
-        description: 'Developing the logical backbone of digital products. I focus on user behavior analysis to create intuitive navigation systems that reduce cognitive load.',
+        id: 'visual',
+        title: 'Visual Synthesis',
+        shortTitle: 'ASSET DESIGN',
+        tools: ['Pixel Precision', 'Vector Logic', 'Asset Manipulation', 'Brand Consistency'],
+        description: 'Focused on the art of asset design, leveraging precise vector and raster workflows to create crisp, high-fidelity visual elements that define a brand.',
         icon: (
             <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h14a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
         ),
         color: 'from-amber-600/10 to-stone-500/10',
         accent: 'text-amber-700'
     },
     {
-        id: 'visual',
-        title: 'Visual Identity Systems',
-        shortTitle: 'SYSTEMS',
-        tools: ['Grid Theory', 'Typography Systems', 'Color Science', 'Brand Cohesion'],
-        description: 'Crafting the visual language of a brand. I develop scalable design systems that ensure aesthetic consistency across every pixel and platform.',
+        id: 'systems',
+        title: 'Interactive Systems',
+        shortTitle: 'PROTOTYPING',
+        tools: ['Component Theory', 'User Flows', 'Systemic Thinking', 'Interaction Design'],
+        description: 'Designing end-to-end user journeys that feel seamless. I transform static layouts into interactive prototypes that simulate real-world behavior and logic.',
         icon: (
             <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
             </svg>
         ),
         color: 'from-stone-900/10 to-stone-600/10',
         accent: 'text-stone-900'
     },
     {
-        id: 'prototype',
-        title: 'Interface Logic & Prototyping',
-        shortTitle: 'LOGIC',
-        tools: ['Advanced Figma', 'Component Theory', 'Accessibility', 'Variable Systems'],
-        description: 'Bridging the gap between static design and interactive reality. I build complex, high-fidelity prototypes that simulate final production experiences.',
+        id: 'narrative',
+        title: 'Communication Design',
+        shortTitle: 'PRESENTATION',
+        tools: ['Information Design', 'Visual Storytelling', 'Layout Theory', 'Stakeholder Alignment'],
+        description: 'Crafting visual narratives that clearly communicate design decisions. Bridging the gap between raw research and engaging presentations to drive impact.',
         icon: (
             <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 17v-2m3 2v-4m3 2v-6m-8-4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
         ),
         color: 'from-stone-400/10 to-stone-300/10',
         accent: 'text-stone-500'
     },
     {
-        id: 'motion',
-        title: 'Cinematic Motion Design',
-        shortTitle: 'NARRATIVE',
-        tools: ['Interaction Loops', 'Micro-Animations', 'Temporal Logic', 'Lottie Systems'],
-        description: 'Utilizing motion as a storytelling tool. I design purposeful transitions that guide the user’s eye and provide tactile feedback to interactions.',
+        id: 'strategy',
+        title: 'Interface Strategy',
+        shortTitle: 'USER LOGIC',
+        tools: ['Hierarchy Design', 'Consistency Systems', 'Usability Patterns', 'Functional Aesthetics'],
+        description: 'Aligning design decisions with user needs and functional goals. Focusing on the "why" behind every pixel to ensure meaningful engagement and clarity.',
         icon: (
             <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
             </svg>
         ),
         color: 'from-stone-500/10 to-amber-700/10',

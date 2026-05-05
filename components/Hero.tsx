@@ -5,9 +5,9 @@ import Image from 'next/image';
 
 const roles = [
     "Visual Interaction Designer",
-    "Design Systems Architect",
-    "User Experience Strategist",
-    "Interface Narrator"
+    "Interface Strategist",
+    "Brand Systems Designer",
+    "Experience Narrator"
 ];
 
 const Hero = () => {
@@ -129,7 +129,7 @@ const Hero = () => {
                         fontFamily: 'var(--font-inter), sans-serif',
                         fontWeight: 500,
                     }}>
-                        Available for Commisions
+                        Available for Professional Engagement
                     </span>
                 </div>
 
@@ -216,14 +216,14 @@ const Hero = () => {
                         transition: 'all 0.6s ease 1s',
                     }}
                 >
-                    Dedicated to the art of visual storytelling. I bridge the gap between 
-                    human emotion and digital interfaces, crafting purposeful visual systems 
-                    that resonate on a visceral level.
+                    Focused on the intersection of visual precision and digital utility.
+                    I transform complex ideas into intuitive, high-fidelity interfaces
+                    that balance functional requirements with a premium aesthetic.
                 </p>
 
                 {/* Skills */}
                 <div className="flex flex-wrap gap-2 mb-10">
-                    {['Visual Systems', 'Grid Theory', 'Typography', 'Color Science', 'Interaction Design'].map((tag, i) => (
+                    {['Visual Systems', 'Vector Logic', 'Interactive Prototyping', 'Typography', 'Design Consistency'].map((tag, i) => (
                         <span
                             key={tag}
                             className="cursor-default"
@@ -330,8 +330,8 @@ const Hero = () => {
                         }}
                     >
                         <span className="relative z-10">Download CV</span>
-                        <svg 
-                            width="14" height="14" viewBox="0 0 24 24" fill="none" 
+                        <svg
+                            width="14" height="14" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                             className="transition-transform duration-500 group-hover:translate-y-0.5 relative z-10"
                         >

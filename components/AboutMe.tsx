@@ -35,9 +35,9 @@ const AboutMe = () => {
     }, []);
 
     const designPillars = [
-        { id: 'philosophy', title: 'Philosophy', icon: '✦', text: "Design is a silent language; I focus on creating purposeful interfaces that guide users through intuition and emotion." },
-        { id: 'process', title: 'Process', icon: '⚙', text: "From conceptual moodboards to high-fidelity motion prototypes, I craft visual systems with pixel-level precision." },
-        { id: 'focus', title: 'Focus', icon: '◎', text: "Specializing in visual identity, systemic elegance, and creating an aesthetic longevity that survives trends." }
+        { id: 'philosophy', title: 'Philosophy', icon: '✦', text: "Design is a bridge between intent and experience. I focus on creating clean, purposeful interfaces that prioritize clarity and user intuition." },
+        { id: 'process', title: 'Process', icon: '⚙', text: "From initial vector-based conceptualization to high-fidelity interactive prototypes, I ensure every design element is strategically placed and functional." },
+        { id: 'focus', title: 'Focus', icon: '◎', text: "Dedicated to visual consistency and systemic design, I build scalable interfaces that maintain a premium aesthetic while solving core user problems." }
     ];
 
     return (
@@ -56,13 +56,13 @@ const AboutMe = () => {
                     <div className="max-w-3xl">
                         <span className="text-[11px] font-bold text-stone-400 uppercase tracking-[0.4em] mb-4 block">Section 02 — Identity</span>
                         <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-stone-900 leading-[1.5] tracking-tighter font-syne py-4">
-                            CRAFTING <br />
-                            <span className="inline-block py-10 px-6 -my-10 -mx-6 text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-stone-700 to-stone-500 italic font-serif font-light">Digital</span> Elegance.
+                            VISUAL <br />
+                            <span className="inline-block py-10 px-6 -my-10 -mx-6 text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-stone-700 to-stone-500 italic font-serif font-light">Narratives.</span>
                         </h2>
                     </div>
                     <div className="md:text-right">
                         <p className="text-stone-500 font-medium text-sm sm:text-base max-w-xs md:ml-auto leading-relaxed font-outfit">
-                            An Interface Specialist dedicated to bridging the gap between artistic vision and human behavior.
+                            A focused designer specializing in the intersection of visual precision and digital utility.
                         </p>
                     </div>
                 </div>
@@ -78,10 +78,10 @@ const AboutMe = () => {
                                     I am <span className="relative inline-block">
                                         <span className="relative z-10">Nandini Yadav,</span>
                                         <span className="absolute bottom-1 left-0 w-full h-3 bg-stone-100 -z-10 group-hover:h-full transition-all duration-500" />
-                                    </span> a visual story-teller crafting sensory digital journeys.
+                                    </span> a visual designer dedicated to crafting purposeful digital journeys.
                                 </h3>
                                 <p className="text-lg sm:text-xl text-stone-600 leading-relaxed font-outfit font-light">
-                                    With a deep obsession for pixel-perfect interfaces and user psychology, I transform complex concepts into intuitive, high-end visual systems. Based in India, I focus on building interfaces that don&apos;t just solve problems—they evoke emotions.
+                                    Specializing in the transition from conceptual vector artwork to high-fidelity interface design. I focus on building cohesive visual systems and pixel-perfect layouts that prioritize ease of use. Based in India, I bridge the gap between creative storytelling and functional digital requirements.
                                 </p>
                             </div>
 
@@ -91,12 +91,12 @@ const AboutMe = () => {
                                     <span className="text-sm font-bold text-stone-900 font-syne uppercase">New Delhi, IN</span>
                                 </div>
                                 <div>
-                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Capabilities</span>
-                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">UI · UX · Visual Identity</span>
+                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Primary Focus</span>
+                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">UI · UX · Brand Systems</span>
                                 </div>
                                 <div>
-                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Experience</span>
-                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">Fresh Perspective</span>
+                                    <span className="text-[10px] font-bold text-stone-400 uppercase tracking-widest block mb-2">Specialization</span>
+                                    <span className="text-sm font-bold text-stone-900 font-syne uppercase">Visual Precision</span>
                                 </div>
                             </div>
                         </div>
@@ -109,9 +109,9 @@ const AboutMe = () => {
                     {/* Skill Tags - Vertical Stack */}
                     <div className={`md:col-span-6 lg:col-span-4 md:row-span-4 bg-stone-900 rounded-[2.5rem] p-6 sm:p-10 text-white flex flex-col justify-between transition-all duration-1000 delay-200 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-12 opacity-0'}`}>
                         <div className="space-y-8">
-                            <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.3em]">Signature Stack</span>
+                            <span className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.3em]">Design Toolkit</span>
                             <div className="flex flex-wrap gap-2">
-                                {['Figma Pro', 'Grid Theory', 'Typography', 'Motion Design', 'Design Systems', 'Interface Psychology', 'Visual Hierarchy', 'Adobe CC'].map((skill) => (
+                                {['Figma Prototyping', 'Vector Illustration', 'Visual Identity', 'Interface Design', 'Typography', 'Adobe Creative Suite', 'Layout Theory', 'Strategic Design'].map((skill) => (
                                     <span key={skill} className="px-4 py-2 bg-stone-800 border border-stone-700 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider hover:bg-white hover:text-stone-900 transition-colors cursor-default">
                                         {skill}
                                     </span>
@@ -121,10 +121,10 @@ const AboutMe = () => {
                         <div className="mt-12">
                             <div className="flex items-end gap-1 mb-2">
                                 <span className="text-5xl font-black font-syne">100%</span>
-                                <span className="text-[10px] font-bold text-stone-400 uppercase mb-2">Commitment</span>
+                                <span className="text-[10px] font-bold text-stone-400 uppercase mb-2">Precision</span>
                             </div>
                             <p className="text-xs text-stone-400 leading-relaxed font-outfit">
-                                Obsessed with the details that others overlook. Every interaction is an opportunity for delight.
+                                Committed to the details that define a high-end experience. I believe in quality over quantity.
                             </p>
                         </div>
                     </div>
@@ -164,7 +164,7 @@ const AboutMe = () => {
                         </div>
                         <div>
                             <h4 className="text-xl sm:text-2xl font-bold text-stone-900 font-syne uppercase leading-tight mb-2">Available for <br />Collaborations</h4>
-                            <p className="text-xs text-stone-500 font-medium font-outfit">Open to full-time roles & exciting freelance projects worldwide.</p>
+                            <p className="text-xs text-stone-500 font-medium font-outfit">Open to full-time roles & professional design partnerships worldwide.</p>
                         </div>
                         <div className="w-full h-1 bg-white rounded-full overflow-hidden mt-6">
                             <div className="h-full w-full bg-stone-900 group-hover:translate-x-full transition-transform duration-[2000ms] ease-in-out" />

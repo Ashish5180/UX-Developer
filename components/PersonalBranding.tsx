@@ -115,23 +115,23 @@ const PersonalBranding = () => {
 
     const whyMe = [
         {
-            question: 'What sets me apart?',
-            title: 'Strategic Thinking',
-            text: 'I architect scalable design systems that bridge the gap between business objectives and genuine user delight.',
+            question: 'What defines my approach?',
+            title: 'Strategic Architecture',
+            text: 'I design scalable interface systems that align with core user needs while maintaining visual elegance and brand consistency.',
             number: '01',
             accentColor: '#8BA88B'
         },
         {
-            question: 'What drives my work?',
-            title: 'Precision & Intent',
-            text: 'Every pixel serves a purpose. I obsess over micro-interactions, accessibility, and the details that create memorable experiences.',
+            question: 'What drives my execution?',
+            title: 'Precision & Craft',
+            text: 'Every pixel is intentional. I focus on the subtle details—typography, spacing, and micro-interactions—that define a premium product.',
             number: '02',
             accentColor: '#C9A49B'
         },
         {
-            question: 'Why invest in me?',
-            title: 'Continuous Growth',
-            text: 'The landscape evolves daily. I bring a learning-first mindset, staying ahead of trends while honoring timeless design principles.',
+            question: 'Why choose my vision?',
+            title: 'Professional Adaptability',
+            text: 'In an evolving industry, I prioritize a growth-oriented mindset, ensuring every project benefits from the latest design patterns and standards.',
             number: '03',
             accentColor: '#7B91AA'
         }
@@ -167,7 +167,7 @@ const PersonalBranding = () => {
                     <div className="flex justify-center mb-8">
                         <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#A69280] to-transparent" />
                     </div>
-                    <p className="font-outfit text-[11px] tracking-[0.5em] uppercase text-[#A69280] mb-6">Technical Proficiency</p>
+                    <p className="font-outfit text-[11px] tracking-[0.5em] uppercase text-[#A69280] mb-6">Professional Ecosystem</p>
                     <h2
                         className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#3D3229] mb-8 leading-[0.9] tracking-tighter"
                     >
@@ -179,11 +179,11 @@ const PersonalBranding = () => {
                                 WebkitBackgroundClip: 'text',
                             }}
                         >
-                            Excellence
+                            Precision
                         </span>
                     </h2>
                     <p className="font-outfit text-[#8A7E73] text-lg md:text-xl max-w-xl mx-auto leading-relaxed opacity-80" style={{ letterSpacing: '0.01em' }}>
-                        Curating digital experiences through a sophisticated blend of industry-standard creative ecosystems.
+                        Bridging the gap between conceptual visual art and high-fidelity interactive logic through a refined design stack.
                     </p>
                 </div>
 
