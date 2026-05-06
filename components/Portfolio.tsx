@@ -34,7 +34,7 @@ const projects = [
             { label: "Packaging", text: "Designed packaging and collaterals for a cohesive brand experience that resonates with consumers.", Icon: Icons.Device },
             { label: "Brand Strategy", text: "Developed a comprehensive brand strategy focused on ritualistic skincare and purity.", Icon: Icons.Users }
         ],
-        image: "/brand_set_2.jpg",
+        image: "/branding.png",
         pdf: "/NOOR_Brand_Identity.pptx.pdf"
     },
     {
@@ -84,6 +84,22 @@ const projects = [
         ],
         image: "/census.jpeg",
         pdf: "/DESIGN THiNKING.pdf"
+    },
+    {
+        id: "05",
+        title: "Personal Branding",
+        role: "Brand Strategy",
+        tagline: "Visual Identity & Self-Positioning",
+        description: "A comprehensive personal branding project focused on creating a cohesive visual language and professional narrative that reflects my design philosophy.",
+        detailedPoints: [
+            { label: "Visual Identity", text: "Developed a consistent visual language including typography and color theory.", Icon: Icons.Diamond },
+            { label: "Portfolio Strategy", text: "Structured case studies to highlight problem-solving and user-centric results.", Icon: Icons.Target },
+            { label: "Market Positioning", text: "Defined unique value propositions to stand out in the competitive UX landscape.", Icon: Icons.Flash },
+            { label: "Typography System", text: "Selected refined typefaces that balance professionalism with creative flair.", Icon: Icons.Search },
+            { label: "Digital Presence", text: "Optimized brand consistency across all professional digital touchpoints.", Icon: Icons.Globe }
+        ],
+        image: "/personal.png",
+        pdf: "/Personal Branding.pdf"
     }
 ];
 
@@ -135,28 +151,28 @@ const Portfolio = () => {
                 </div>
 
                 {/* ── GRID ── */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-stone-200 border-y border-stone-200">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200 border-y border-stone-200">
                     {projects.map((project, idx) => (
                         <div
                             key={project.id}
-                            className={`group cursor-pointer relative bg-white p-8 md:p-12 transition-all duration-700 hover:bg-[#FAF8F5] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'} delay-${idx * 100}`}
+                            className={`group cursor-pointer relative bg-white p-6 md:p-8 transition-all duration-700 hover:bg-[#FAF8F5] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'} delay-${idx * 100}`}
                             onClick={() => setSelectedProject(project)}
                         >
-                            <div className="flex justify-between items-start mb-8">
+                            <div className="flex justify-between items-start mb-6">
                                 <div className="space-y-1">
-                                    <span className="text-[11px] font-bold tracking-[0.3em] uppercase text-[#B8965A]">
+                                    <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#B8965A]">
                                         {project.role}
                                     </span>
-                                    <h3 className={`${cormorant.className} text-4xl md:text-5xl lg:text-6xl font-light text-[#2A2520] leading-none`}>
+                                    <h3 className={`${cormorant.className} text-3xl md:text-4xl font-light text-[#2A2520] leading-tight`}>
                                         {project.title}
                                     </h3>
                                 </div>
-                                <span className={`${cormorant.className} text-4xl font-light text-stone-200`}>
+                                <span className={`${cormorant.className} text-3xl font-light text-stone-200`}>
                                     {project.id}
                                 </span>
                             </div>
 
-                            <div className="relative w-full aspect-[16/10] mb-8 overflow-hidden rounded-sm bg-stone-50 transition-all duration-700 group-hover:shadow-[0_40px_100px_-20px_rgba(42,37,32,0.15)]">
+                            <div className="relative w-full aspect-[4/3] mb-6 overflow-hidden rounded-sm bg-stone-50 transition-all duration-700 group-hover:shadow-[0_20px_50px_-10px_rgba(42,37,32,0.1)]">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
@@ -165,12 +181,12 @@ const Portfolio = () => {
                                 />
                             </div>
 
-                            <div className="space-y-4">
-                                <p className={`${cormorant.className} text-2xl md:text-3xl text-[#2A2520] italic font-light leading-tight opacity-80`}>
+                            <div className="space-y-3">
+                                <p className={`${cormorant.className} text-xl md:text-2xl text-[#2A2520] italic font-light leading-tight opacity-80`}>
                                     &quot;{project.tagline}&quot;
                                 </p>
-                                <div className="flex items-center gap-3 text-[#B8965A] border-t border-stone-100 pt-8 group-hover:translate-x-2 transition-transform duration-500">
-                                    <span className="text-[10px] font-bold tracking-[0.4em] uppercase">Open Archive</span>
+                                <div className="flex items-center gap-3 text-[#B8965A] border-t border-stone-100 pt-6 group-hover:translate-x-2 transition-transform duration-500">
+                                    <span className="text-[9px] font-bold tracking-[0.4em] uppercase">Open Archive</span>
                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                     </svg>
@@ -178,6 +194,50 @@ const Portfolio = () => {
                             </div>
                         </div>
                     ))}
+
+                    {/* ── CTA CARD (6th Column) ── */}
+                    <div
+                        className={`group cursor-pointer relative bg-[#2A2520] p-6 md:p-8 transition-all duration-700 hover:bg-[#352F29] overflow-hidden ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'} delay-500`}
+                        onClick={() => {
+                            const contactSection = document.getElementById('contact');
+                            if (contactSection) {
+                                contactSection.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }}
+                    >
+                        <div className="flex justify-between items-start mb-6">
+                            <div className="space-y-1">
+                                <span className="text-[10px] font-bold tracking-[0.3em] uppercase text-[#B8965A]">
+                                    Next Chapter
+                                </span>
+                                <h3 className={`${cormorant.className} text-3xl md:text-4xl font-light text-white leading-tight`}>
+                                    Your Project <span className="italic font-normal">Next?</span>
+                                </h3>
+                            </div>
+                            <span className={`${cormorant.className} text-3xl font-light text-stone-700`}>
+                                ++
+                            </span>
+                        </div>
+
+                        <div className="relative w-full aspect-[4/3] mb-6 overflow-hidden rounded-sm bg-stone-800/50 flex items-center justify-center border border-stone-700 group-hover:border-[#B8965A]/30 transition-all duration-700">
+                             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_#B8965A_0%,_transparent_70%)]" />
+                             <svg className="w-16 h-16 text-[#B8965A] opacity-40 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.5} d="M12 4v16m8-8H4" />
+                             </svg>
+                        </div>
+
+                        <div className="space-y-3">
+                            <p className={`${cormorant.className} text-xl md:text-2xl text-stone-300 italic font-light leading-tight opacity-80`}>
+                                &quot;Let&apos;s build something exceptional together.&quot;
+                            </p>
+                            <div className="flex items-center gap-3 text-[#B8965A] border-t border-stone-700 pt-6 group-hover:translate-x-2 transition-transform duration-500">
+                                <span className="text-[9px] font-bold tracking-[0.4em] uppercase">Get In Touch</span>
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

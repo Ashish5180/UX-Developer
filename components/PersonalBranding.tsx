@@ -169,10 +169,9 @@ const PersonalBranding = () => {
                     </div>
                     <p className="font-outfit text-[11px] tracking-[0.5em] uppercase text-[#A69280] mb-6">Professional Ecosystem</p>
                     <h2
-                        className="font-serif text-5xl md:text-7xl lg:text-8xl text-[#3D3229] mb-8 leading-[0.9] tracking-tighter"
+                        className="font-serif text-4xl md:text-6xl lg:text-7xl text-[#3D3229] mb-8 leading-tight tracking-tighter"
                     >
-                        Tools &<br />
-                        <span
+                        Tools & <span
                             className="text-transparent bg-clip-text"
                             style={{
                                 backgroundImage: 'linear-gradient(135deg, #A69280 0%, #C9A49B 40%, #8BA88B 70%, #7B91AA 100%)',

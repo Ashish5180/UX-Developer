@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import PersonalBranding from '@/components/PersonalBranding';
-import AboutMe from '@/components/AboutMe';
+
 import Portfolio from '@/components/Portfolio';
 import Expertise from '@/components/Expertise';
 import Contact from '@/components/Contact';
@@ -19,7 +19,7 @@ export default function Home() {
       <PersonalBranding />
 
       {/* About Me Section */}
-      <AboutMe />
+      {/* <AboutMe /> */}
 
       {/* Portfolio Section */}
       <Portfolio />

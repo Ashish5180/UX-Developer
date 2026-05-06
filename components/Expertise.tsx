@@ -98,9 +98,8 @@ const Expertise = () => {
                         </span>
                     </div>
                     
-                    <h2 className={`text-6xl md:text-9xl font-bold text-[#2A2520] tracking-tighter leading-[0.95] transition-all duration-1000 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-                        Visual <br />
-                        <span className={`${cormorant.className} italic font-normal text-[#B8965A] block mt-4`}>Specialization.</span>
+                    <h2 className={`text-5xl md:text-6xl lg:text-7xl font-bold text-[#2A2520] tracking-tighter leading-tight transition-all duration-1000 delay-100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+                        Visual <span className={`${cormorant.className} italic font-normal text-[#B8965A]`}>Specialization.</span>
                     </h2>
                 </div>
 

@@ -30,9 +30,9 @@ const Contact = () => {
         >
             {/* ── BACKGROUND ELEMENTS ── */}
             {/* Subtle Grain/Noise overlay */}
-            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" 
-                 style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
-            
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} />
+
             {/* Architectural Grid lines */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <div className="absolute left-[8%] top-0 bottom-0 w-px bg-black/[0.03]" />
@@ -51,7 +51,7 @@ const Contact = () => {
 
                 {/* ── LEFT COLUMN: CONTENT ── */}
                 <div className={`transition-all duration-1200 cubic-bezier(0.2, 0, 0.2, 1) ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-16'}`}>
-                    
+
                     {/* Section Identifier */}
                     <div className="flex items-center gap-4 mb-10">
                         <div className="w-12 h-px bg-[#B8965A]/40" />
@@ -73,7 +73,7 @@ const Contact = () => {
                             </span> <br />
                             <strong className="font-semibold block mt-2">Significant<br />Design.</strong>
                         </h2>
-                        
+
                         {/* Dimensional Watermark */}
                         <span className={`${cormorant.className} absolute -bottom-16 -left-8 font-light select-none pointer-events-none`}
                             style={{ fontSize: '200px', color: 'rgba(42,37,32,0.03)', lineHeight: 1, letterSpacing: '-0.05em' }}>
@@ -90,7 +90,7 @@ const Contact = () => {
                         <div>
                             <span className="block text-[9px] font-medium tracking-[0.3em] uppercase text-[#A09385] mb-4">Direct Contact</span>
                             <a href="mailto:hello@nandini.design" className="text-sm font-medium text-[#2A2520] hover:text-[#B8965A] transition-colors duration-300">
-                                hello@nandini.design
+                                nandinisatya06@gmail.com
                             </a>
                         </div>
                         <div>
@@ -120,7 +120,7 @@ const Contact = () => {
                 {/* ── RIGHT COLUMN: INTERACTIVE FORM ── */}
                 <div className={`transition-all duration-1200 delay-400 cubic-bezier(0.2, 0, 0.2, 1) ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-16'}`}>
                     <div className="relative p-10 md:p-14 bg-white shadow-[0_40px_100px_-20px_rgba(42,37,32,0.08)] border border-[#EDE8DC]">
-                        
+
                         {/* Decorative Corner Accents */}
                         <div className="absolute top-6 left-6 w-8 h-8 border-t border-l border-[#B8965A]/20" />
                         <div className="absolute bottom-6 right-6 w-8 h-8 border-b border-r border-[#B8965A]/20" />
@@ -141,16 +141,16 @@ const Contact = () => {
                                 { id: 'email', label: 'Email Address', type: 'email', placeholder: 'your@residence.com' },
                             ].map(field => (
                                 <div key={field.id} className="relative group">
-                                    <label 
+                                    <label
                                         htmlFor={field.id}
                                         className={`absolute left-0 transition-all duration-300 pointer-events-none uppercase tracking-[0.25em] text-[9px] font-medium
                                             ${focusedField === field.id ? '-top-5 text-[#B8965A]' : 'top-3 text-[#A09385]'}`}
                                     >
                                         {field.label}
                                     </label>
-                                    <input 
+                                    <input
                                         id={field.id}
-                                        type={field.type} 
+                                        type={field.type}
                                         placeholder={focusedField === field.id ? field.placeholder : ''}
                                         className="w-full bg-transparent border-b border-[#EDE8DC] py-3 text-sm font-light text-[#2A2520] outline-none transition-all duration-500 focus:border-[#B8965A]"
                                         onFocus={() => setFocusedField(field.id)}
@@ -161,14 +161,14 @@ const Contact = () => {
                             ))}
 
                             <div className="relative group">
-                                <label 
+                                <label
                                     htmlFor="vision"
                                     className={`absolute left-0 transition-all duration-300 pointer-events-none uppercase tracking-[0.25em] text-[9px] font-medium
                                         ${focusedField === 'vision' ? '-top-5 text-[#B8965A]' : 'top-3 text-[#A09385]'}`}
                                 >
                                     The Vision
                                 </label>
-                                <textarea 
+                                <textarea
                                     id="vision"
                                     rows={4}
                                     placeholder={focusedField === 'vision' ? 'Tell me about the essence of your project...' : ''}
@@ -179,7 +179,7 @@ const Contact = () => {
                                 <div className={`absolute bottom-0 left-0 h-px bg-[#B8965A] transition-all duration-700 ease-out ${focusedField === 'vision' ? 'w-full' : 'w-0'}`} />
                             </div>
 
-                            <button 
+                            <button
                                 type="submit"
                                 className="w-full group relative overflow-hidden bg-[#2A2520] py-6 transition-all duration-500 hover:shadow-2xl hover:shadow-[#2A2520]/20"
                             >
